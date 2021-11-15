@@ -1,4 +1,4 @@
-# Yolov3 Object Detection In OSRS using Python code, Detecting Cows - Botting
+# Yolov5 Object Detection In OSRS using Python code, Detecting Cows - Botting
 
 name: GeForce GTX 1060 6GB
 
