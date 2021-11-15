@@ -4,7 +4,7 @@ Run inference on images, videos, directories, streams, etc.
 
 Usage:
     $ python detect.py --source img.jpg --weights yolov5s.pt --img 640
-    python detect.py --source aim_map_csgo0069.jpg --weights best.pt --img 1280
+    python detect.py --source ./data/images/cow_osrs_test.PNG --weights best.pt --img 640
 """
 import os
 
@@ -179,4 +179,4 @@ if __name__ == "__main__":
     opt = parse_opt()
     main(opt)
 
-#python detect.py --source img.jpg --weights yolov5s.pt --img 640
+#python detect.py --source ./data/images/cow_osrs_test.PNG --weights best.pt --img 640
