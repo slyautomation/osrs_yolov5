@@ -4,7 +4,7 @@ Train a YOLOv5 model on a custom dataset
 
 Usage:
     $ python train.py --data csgo.yaml --weights yolov5s.pt --batch-size 2
-    python train.py --data coco-person.yaml --weights yolov5s.pt --batch-size 2
+    python train.py --data coco128.yaml --weights yolov5s.pt --batch-size 2
 """
 
 import argparse
