@@ -43,18 +43,20 @@ from utils.plots import colors, plot_one_box
 from utils.torch_utils import select_device, time_sync
 
 def GRABMSS_screen():
-    im = ImageGrab.grab(bbox=monitor) # left , top , right, bottom
+    #im = ImageGrab.grab(bbox=monitor) # left , top , right, bottom
+    im = ImageGrab.grab()  # left , top , right, bottom
     im.save('fullscreen.png', 'png')
     return 'fullscreen.png'
 
 def click_object(box):
     x = int(box[0])
-    x2 = int(box[2])
     y = int(box[1])
+    x2 = int(box[2])
     y2 = int(box[3])
     print('| x:', x, '| y:', y )
     d = random.uniform(0.01,0.05)
-    pyautogui.moveTo(round(x+x2/2, 0), round(y+y2/2, 0) + monitor[1], duration=d)
+    #pyautogui.moveTo(round((x+x2)/2,0), round((y+y2)/2,0), duration=d) # center click
+    pyautogui.moveTo(round((x + x2) / 2, 0), round((y + (y*0.1)), 0), duration=d)  # 10% upper (head) click
     d = random.uniform(0.01,0.05)
     pyautogui.click(button='left', duration=d)
 
@@ -92,20 +94,17 @@ def run(weights='best.pt',  # model.pt path(s)
     stride = int(model.stride.max())  # model stride
     names = model.module.names if hasattr(model, 'module') else model.names  # get class names
     imgsz = check_img_size(imgsz, s=stride)  # check image size
-    # print(imgsz)
 
     model(torch.zeros(1, 3, *imgsz).to(device).type_as(next(model.parameters())))  # run once
     cudnn.benchmark = True  # set True to speed up constant image size inference
     time_clicked = time.time()
     # ------ attempt loop here ------
     while time.time() < t_end:
-
         source = GRABMSS_screen()
         # Dataloader
         dataset = LoadImages(source, img_size=imgsz, stride=stride, auto=True)
         # Run inference
         #model(torch.zeros(1, 3, *[1280,1280]).to(device).type_as(next(model.parameters())))
-
         t0 = time.time()
         for path, img, im0s, vid_cap in dataset:
             img = torch.from_numpy(img).to(device)
@@ -117,11 +116,9 @@ def run(weights='best.pt',  # model.pt path(s)
             # Inference
             t1 = time_sync()
             pred = model(img, augment=augment, visualize=visualize)[0]
-
             # NMS
             pred = non_max_suppression(pred, conf_thres, iou_thres, classes, agnostic_nms, max_det=max_det)
             t2 = time_sync()
-
             # Process predictions
             for i, det in enumerate(pred):  # detections per image
                 p, s, im0, frame = path, '', im0s.copy(), getattr(dataset, 'frame', 0)
@@ -130,27 +127,21 @@ def run(weights='best.pt',  # model.pt path(s)
                 if len(det):
                     # Rescale boxes from img_size to im0 size
                     det[:, :4] = scale_coords(img.shape[2:], det[:, :4], im0.shape).round()
-
                     # Print results
                     for c in det[:, -1].unique():
                         n = (det[:, -1] == c).sum()  # detections per class
                         s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
 
-                    #print(det[0])
                     # Write results
-                    #*xyxy, conf, cls = det[0]
-                    #print('xyxy', xyxy)
-                    #print('conf', float(conf))
-                    #print('class', int(cls))
                     for *xyxy, conf, cls in reversed(det):
                         c = int(cls)  # integer class
 
                         label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
-                        print('label:', label)
+                        #print('label:', label)
                         im0 = plot_one_box(xyxy, im0, label=label, color=colors(c, True), line_width=line_thickness)
-                    print('im0:', im0)
+                    #print('im0:', im0)
                     print('xyxy', xyxy)
-                    print('label:', label)
+                    #print('label:', label)
                     if time.time() > time_clicked and float(conf) > 0.9:
                         click_object(xyxy)
                         time_clicked = time.time() + 10
@@ -227,5 +218,3 @@ if __name__ == "__main__":
     opt = parse_opt()
     #main(opt)
     main_auto()
-
-#python detect.py --source img.jpg --weights yolov5s.pt --img 640
