@@ -4,10 +4,13 @@ Run inference on images, videos, directories, streams, etc.
 
 Usage:
     $ python detect.py --source img.jpg --weights yolov5s.pt --img 640
-    python detect.py --source ./data/images/cow_osrs_test.PNG --weights best.pt --img 640
+    python detect.py --source aim_map_csgo0069.jpg --weights best.pt --img 1280
 """
+import datetime
 import os
-
+import random
+import tensorflow as tf
+import pyautogui
 from PIL import ImageGrab
 import argparse
 import sys
@@ -30,7 +33,7 @@ FILE = Path(__file__).absolute()
 sys.path.append(FILE.parents[0].as_posix())  # add yolov5/ to path
 
 # Set monitor size to capture
-monitor = {"top": 240, "left": 200, "width": 1040, "height": 800}
+monitor = (240, 200, 1040,800)
 
 from models.experimental import attempt_load
 from utils.datasets import LoadImages
@@ -40,10 +43,20 @@ from utils.plots import colors, plot_one_box
 from utils.torch_utils import select_device, time_sync
 
 def GRABMSS_screen():
-    im = ImageGrab.grab(bbox=(240, 200, 1040, 800)) # left , top , right, bottom
+    im = ImageGrab.grab(bbox=monitor) # left , top , right, bottom
     im.save('fullscreen.png', 'png')
     return 'fullscreen.png'
 
+def click_object(box):
+    x = int(box[0])
+    x2 = int(box[2])
+    y = int(box[1])
+    y2 = int(box[3])
+    print('| x:', x, '| y:', y )
+    d = random.uniform(0.01,0.05)
+    pyautogui.moveTo(round(x+x2/2, 0), round(y+y2/2, 0) + monitor[1], duration=d)
+    d = random.uniform(0.01,0.05)
+    pyautogui.click(button='left', duration=d)
 
 @torch.no_grad()
 def run(weights='best.pt',  # model.pt path(s)
@@ -62,7 +75,12 @@ def run(weights='best.pt',  # model.pt path(s)
         hide_labels=False,  # hide labels
         hide_conf=False,  # hide confidences
         half=False,  # use FP16 half-precision inference
+        Run_Duration_hours=6 # how long to run code for in hours
         ):
+    t_end = time.time() + (60 * 60 * Run_Duration_hours)
+    # using the datetime.fromtimestamp() function
+    date_time = datetime.datetime.fromtimestamp(t_end)
+    print(date_time)
     global fps, display_time, start_time
     # Initialize
     set_logging()
@@ -78,17 +96,15 @@ def run(weights='best.pt',  # model.pt path(s)
 
     model(torch.zeros(1, 3, *imgsz).to(device).type_as(next(model.parameters())))  # run once
     cudnn.benchmark = True  # set True to speed up constant image size inference
-
+    time_clicked = time.time()
     # ------ attempt loop here ------
-    x = 1
-    while x < 500:
+    while time.time() < t_end:
 
         source = GRABMSS_screen()
         # Dataloader
         dataset = LoadImages(source, img_size=imgsz, stride=stride, auto=True)
-
         # Run inference
-        # model(torch.zeros(1, 3, *[1280,1280]).to(device).type_as(next(model.parameters())))
+        #model(torch.zeros(1, 3, *[1280,1280]).to(device).type_as(next(model.parameters())))
 
         t0 = time.time()
         for path, img, im0s, vid_cap in dataset:
@@ -120,12 +136,24 @@ def run(weights='best.pt',  # model.pt path(s)
                         n = (det[:, -1] == c).sum()  # detections per class
                         s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
 
+                    #print(det[0])
                     # Write results
+                    #*xyxy, conf, cls = det[0]
+                    #print('xyxy', xyxy)
+                    #print('conf', float(conf))
+                    #print('class', int(cls))
                     for *xyxy, conf, cls in reversed(det):
                         c = int(cls)  # integer class
-                        label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
-                        im0 = plot_one_box(xyxy, im0, label=label, color=colors(c, True), line_width=line_thickness)
 
+                        label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
+                        print('label:', label)
+                        im0 = plot_one_box(xyxy, im0, label=label, color=colors(c, True), line_width=line_thickness)
+                    print('im0:', im0)
+                    print('xyxy', xyxy)
+                    print('label:', label)
+                    if time.time() > time_clicked and float(conf) > 0.9:
+                        click_object(xyxy)
+                        time_clicked = time.time() + 10
                 # Print time (inference + NMS)
                 print(f'{s}Done. ({t2 - t1:.3f}s)')
 
@@ -133,10 +161,10 @@ def run(weights='best.pt',  # model.pt path(s)
                 if view_img:
                     # cv2.destroyAllWindows()
                     cv2.imshow('aimbot', im0)
+
                     cv2.waitKey(1)
         os.remove("fullscreen.png")
         print(f'Done. ({time.time() - t0:.3f}s)')
-        x += 1
         fps += 1
         TIME = time.time() - start_time
         if (TIME) >= display_time:
@@ -168,6 +196,26 @@ def parse_opt():
     opt.imgsz *= 2 if len(opt.imgsz) == 1 else 1  # expand
     return opt
 
+def main_auto():
+    #check_requirements(exclude=('tensorboard', 'thop'))
+    run(weights='best.pt',  # model.pt path(s)
+        source='data/images',  # file/dir/URL/glob, 0 for webcam
+        imgsz=[640,640],  # inference size (pixels)
+        conf_thres=0.7,  # confidence threshold
+        iou_thres=0.45,  # NMS IOU threshold
+        max_det=10,  # maximum detections per image
+        device='0',  # cuda device, i.e. 0 or 0,1,2,3 or cpu
+        view_img=True,  # show results
+        classes=None,  # filter by class: --class 0, or --class 0 2 3
+        agnostic_nms=False,  # class-agnostic NMS
+        augment=False,  # augmented inference
+        visualize=False,  # visualize features
+        line_thickness=1,  # bounding box thickness (pixels)
+        hide_labels=False,  # hide labels
+        hide_conf=False,  # hide confidences
+        half=False,  # use FP16 half-precision inference
+        Run_Duration_hours=6  # how long to run code for in hours
+        )
 
 def main(opt):
     print(colorstr('detect: ') + ', '.join(f'{k}={v}' for k, v in vars(opt).items()))
@@ -177,6 +225,7 @@ def main(opt):
 
 if __name__ == "__main__":
     opt = parse_opt()
-    main(opt)
+    #main(opt)
+    main_auto()
 
-#python detect.py --source ./data/images/cow_osrs_test.PNG --weights best.pt --img 640
+#python detect.py --source img.jpg --weights yolov5s.pt --img 640
