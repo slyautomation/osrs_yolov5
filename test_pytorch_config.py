@@ -1,3 +1,5 @@
+import os
+
 from utils.downloads import attempt_download
 import torch
 import torch.onnx
@@ -39,5 +41,19 @@ def test_gpu():
 
     print(torch.cuda.get_device_name(0))
 
-test_cpu()
-test_gpu()
+
+
+# pip install torch===1.9.0+cu102 -f https://download.pytorch.org/whl/torch_stable.html
+# pip install torchvision===0.10.0+cu102 -f https://download.pytorch.org/whl/torch_stable.html
+# pip install torchaudio===0.9.0
+
+# download_weights()
+# test_cpu()
+# test_gpu()
+
+import zipfile
+
+zipPath = './datasets/'
+
+with zipfile.ZipFile(zipPath + 'osrs.zip*', 'r') as zip_ref:
+    zip_ref.extractall('./datasets/osrs/')
