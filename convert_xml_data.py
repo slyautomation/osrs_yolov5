@@ -35,7 +35,7 @@ def convert_label(path, lb_path, image_id):
 
 
 # Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
-path = "\\datasets\\cow\\"  # dataset root dir
+path = "\\datasets\\osrs\\"  # dataset root dir
 
 directory = pathlib.Path(__file__).parent.resolve()
 print(str(directory) + path)
