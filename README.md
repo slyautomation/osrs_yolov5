@@ -60,6 +60,16 @@ pip install -r requirements.txt
 
 goto website and check version https://download.pytorch.org/whl/torch_stable.html
 
+To take advantage of the gpu and cuda refer to the list for your cuda version search for cu<version of cuda no spaces or fullstops> e.g cu102 for cuda 10.2.
+  
+use the latest versions found, i at this point in time found: torch 1.9.1, torchvision 0.11.2 and torchaudio 0.10.1
+
+  ![image](https://user-images.githubusercontent.com/81003470/147748700-4b98d0d3-f8da-4949-b581-ac79bb5876f6.png)
+
+  ![image](https://user-images.githubusercontent.com/81003470/147748717-b843b377-cb25-449f-bd79-7e379fe3d523.png)
+
+  ![image](https://user-images.githubusercontent.com/81003470/147748757-9c668269-bdf7-4bad-8521-bf1f63940684.png)
+
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
 
