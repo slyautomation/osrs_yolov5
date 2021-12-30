@@ -6,23 +6,10 @@ name: GeForce GTX 1060 6GB
 
 ### installing pycharm
 
+
 pycharm = https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows&code=PCC
 
-once downloaded: click on the file to start ithe installisation:
-
-![image](https://user-images.githubusercontent.com/81003470/147712917-e0f87af5-9f67-4fff-a490-4e0958a56871.png)
-
-the installisation program will start click on the next buttons, if applicable uninstall any previous version and 'Uninstall Silently to ensure no settings are lost by checking the boxes:
-
-![image](https://user-images.githubusercontent.com/81003470/147713017-9786df65-773c-4852-8b0c-f9929938fffd.png)
-
-Make sure to check the boxes for updating the PATH Variable and create associations, anything else is optional:
-
-![image](https://user-images.githubusercontent.com/81003470/147713061-8eed0194-0ed9-4323-9695-bb621980a432.png)
-
-Next reboot pc to ensure pycharm is fully installed:
-
-![image](https://user-images.githubusercontent.com/81003470/147713102-599ad90a-51fc-4a66-b8e1-6c7d523e719c.png)
+Step walkthrough instalisation of pycharm: https://github.com/slyautomation/osrs_yolov5/wiki/How-to-Install-Pycharm
 
 ### Check your cuda version
 
