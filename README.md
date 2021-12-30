@@ -8,12 +8,9 @@ name: GeForce GTX 1060 6GB
 
 pycharm = https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows&code=PCC
 
-
-type in terminal:
-
 ### Check your cuda version
 
-type: nvidia-smi
+type in terminal: nvidia-smi
 
 ![image](https://user-images.githubusercontent.com/81003470/147712277-5b1fae1d-33b2-4ff0-a4de-19ef762e1b14.png)
 
