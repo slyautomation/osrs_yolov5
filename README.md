@@ -67,8 +67,6 @@ To take advantage of the gpu and cuda refer to the list for your cuda version se
 use the latest versions found, i at this point in time found: torch 1.10.1 and torchvision 0.11.2
 
   ![image](https://user-images.githubusercontent.com/81003470/147751626-8be13bfb-e97d-4642-81db-20955f2a41ad.png)
-
-  ![image](https://user-images.githubusercontent.com/81003470/147748717-b843b377-cb25-449f-bd79-7e379fe3d523.png)
   
   in the terminal type the torch version + your cuda version (except for torchaudio no cuda version required):
   
