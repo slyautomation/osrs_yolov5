@@ -1,4 +1,4 @@
-- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `#f03c15`
+
 
 # Yolov5 Object Detection In OSRS using Python code, Detecting Cows - Botting
 
@@ -80,7 +80,7 @@ use the latest versions found, i at this point in time found: torch 1.10.1 and t
   
   ![image](https://user-images.githubusercontent.com/81003470/147749284-9411be6f-f000-4bf9-a167-b0d214b977f5.png)
 
-![#f03c15] Make sure when installing torchvision it doesn't try to install another version due to incompatability, try to either find a later version of torch or use a downgraded version of torchvision. there could be issues if another torch version is installed but the cuda version doesn't align with your gpu. `#f03c15`
+- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Make sure when installing torchvision it doesn't try to install another version due to incompatability, try to either find a later version of torch or use a downgraded version of torchvision. there could be issues if another torch version is installed but the cuda version doesn't align with your gpu.`
   
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
