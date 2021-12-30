@@ -42,6 +42,8 @@ labelImg = https://tzutalin.github.io/labelImg/
 
 Add this repo to a project in Pycharm
 
+Step walkthrough adding project with Pycharm: 
+
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
 
