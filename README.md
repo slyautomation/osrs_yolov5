@@ -1,3 +1,5 @@
+- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `#f03c15`
+
 # Yolov5 Object Detection In OSRS using Python code, Detecting Cows - Botting
 
 name: GeForce GTX 1060 6GB
@@ -62,17 +64,15 @@ goto website and check version https://download.pytorch.org/whl/torch_stable.htm
 
 To take advantage of the gpu and cuda refer to the list for your cuda version search for cu<version of cuda no spaces or fullstops> e.g cu102 for cuda 10.2.
   
-use the latest versions found, i at this point in time found: torch 1.9.1, torchvision 0.11.2 and torchaudio 0.10.1
+use the latest versions found, i at this point in time found: torch 1.10.1 and torchvision 0.11.2
 
-  ![image](https://user-images.githubusercontent.com/81003470/147748700-4b98d0d3-f8da-4949-b581-ac79bb5876f6.png)
+  ![image](https://user-images.githubusercontent.com/81003470/147751626-8be13bfb-e97d-4642-81db-20955f2a41ad.png)
 
   ![image](https://user-images.githubusercontent.com/81003470/147748717-b843b377-cb25-449f-bd79-7e379fe3d523.png)
-
-  ![image](https://user-images.githubusercontent.com/81003470/147748757-9c668269-bdf7-4bad-8521-bf1f63940684.png)
   
   in the terminal type the torch version + your cuda version (except for torchaudio no cuda version required):
   
-  pip install torch==1.9.1+cu102 -f https://download.pytorch.org/whl/torch_stable.html
+  pip install torch==1.10.1+cu102 -f https://download.pytorch.org/whl/torch_stable.html
   
   ![image](https://user-images.githubusercontent.com/81003470/147749033-c5de2a74-5365-444c-93c1-f5d9f75512c4.png)
 
@@ -80,9 +80,8 @@ use the latest versions found, i at this point in time found: torch 1.9.1, torch
   
   ![image](https://user-images.githubusercontent.com/81003470/147749284-9411be6f-f000-4bf9-a167-b0d214b977f5.png)
 
+![#f03c15] Make sure when installing torchvision it doesn't try to install another version due to incompatability, try to either find a later version of torch or use a downgraded version of torchvision. there could be issues if another torch version is installed but the cuda version doesn't align with your gpu.
   
-  pip install torchaudio==0.10.1
-
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
 
