@@ -38,6 +38,10 @@ Step walkthrough Installation of cuDNN: https://github.com/slyautomation/osrs_yo
 labelImg = https://tzutalin.github.io/labelImg/
 
 
+### Using this Repo
+
+Add this repo to a project in Pycharm
+
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
 
