@@ -45,27 +45,8 @@ Add this repo to a project in Pycharm
 Step walkthrough adding project with Pycharm: https://github.com/slyautomation/osrs_yolov5/wiki/How-to-add-Project-with-Pycharm
 
 ### Ensure Project is within venv (virtual environment)
-in the terminal type:
 
-cd venv
-
-cd scripts
-
-activate
-
-There should be (venv) in front of your project's location in the terminal:
-
-![image](https://user-images.githubusercontent.com/81003470/147746002-21504567-4224-4d44-9b96-b0334574c4a9.png)
-
-revert location back to default in terminal by typing:
-
-cd ../
-
-cd ../
-
-![image](https://user-images.githubusercontent.com/81003470/147746232-882fdb98-850b-4b88-b2ac-685aa9cc33b7.png)
-
-This will ensure all code is executed within the project.
+Step walkthrough activating venv: https://github.com/slyautomation/osrs_yolov5/wiki/how-to-ensure-venv-(virtual-environment)-is-active
 
 ## Install Module Requirements
 
@@ -75,11 +56,7 @@ pip install -r requirements.txt
 
 ![image](https://user-images.githubusercontent.com/81003470/147746531-aa622ccb-d6a0-4310-85b7-4775f8b0732a.png)
 
-make sure venv is not in the excluded folders, go to settings under Project and project structure:
 
-Click the x to remove excluded folders and click apply, then ok.
-
-![image](https://user-images.githubusercontent.com/81003470/147747758-080079f4-7060-46c2-9d1b-d04aeaf27b87.png)
 
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
