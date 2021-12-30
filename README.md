@@ -12,10 +12,13 @@ once downloaded: click on the file to start ithe installisation:
 
 ![image](https://user-images.githubusercontent.com/81003470/147712917-e0f87af5-9f67-4fff-a490-4e0958a56871.png)
 
-the installisation program will start click on the next buttons, if applicable uninstall any previous version and 'Uninstall Silently to ensure no settings are lost:
+the installisation program will start click on the next buttons, if applicable uninstall any previous version and 'Uninstall Silently to ensure no settings are lost by checking the boxes:
 
 ![image](https://user-images.githubusercontent.com/81003470/147713017-9786df65-773c-4852-8b0c-f9929938fffd.png)
 
+Make sure to check the boxes for updating the PATH Variable and create associations, anything else is optional:
+
+![image](https://user-images.githubusercontent.com/81003470/147713061-8eed0194-0ed9-4323-9695-bb621980a432.png)
 
 ### Check your cuda version
 
