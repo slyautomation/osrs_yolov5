@@ -42,7 +42,10 @@ labelImg = https://tzutalin.github.io/labelImg/
 
 Add this repo to a project in Pycharm
 
-Step walkthrough adding project with Pycharm: 
+Step walkthrough adding project with Pycharm: https://github.com/slyautomation/osrs_yolov5/wiki/How-to-add-Project-with-Pycharm
+
+### Ensure Project is within venv (virtual environment)
+
 
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
