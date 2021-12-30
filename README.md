@@ -79,7 +79,13 @@ use the latest versions found, i at this point in time found: torch 1.10.1 and t
   ![image](https://user-images.githubusercontent.com/81003470/147749284-9411be6f-f000-4bf9-a167-b0d214b977f5.png)
 
 - ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Make sure when installing torchvision it doesn't try to install another version due to incompatability, try to either find a later version of torch or use a downgraded version of torchvision. there could be issues if another torch version is installed but the cuda version doesn't align with your gpu.`
+
+## Test pytorch and cuda work
   
+in the project run main.py, the output should result in the device used as cuda, and the tensor calculations should run without errors:
+  
+  ![image](https://user-images.githubusercontent.com/81003470/147753127-c97b0ce4-e9c6-49d4-a817-f9a71928e240.png)
+
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
 
