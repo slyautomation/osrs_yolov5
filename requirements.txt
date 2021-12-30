@@ -10,3 +10,4 @@ tensorboard>=2.4.1
 pandas>=1.1.4
 seaborn>=0.11.0
 pytesseract>=0.3.8
+pyautogui>=0.9.53
