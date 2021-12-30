@@ -29,18 +29,11 @@ cuda 10.2 = https://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_i
 
 ### Install Cudnn
 
-cudnn = https://developer.nvidia.com/rdp/cudnn-archive#a-collapse765-10
+cuDNN = https://developer.nvidia.com/rdp/cudnn-archive#a-collapse765-10
 
-![image](https://user-images.githubusercontent.com/81003470/147714728-a81e015e-4422-41ba-a8ec-b16b7ac397ae.png)
+Step walkthrough Installation of cuDNN: https://github.com/slyautomation/osrs_yolov5/wiki/How-to-install-CuDNN
 
-![image](https://user-images.githubusercontent.com/81003470/147715159-b9de83e0-9fd2-4853-93c6-e0ab84ab661d.png)
-
-![image](https://user-images.githubusercontent.com/81003470/147715257-6448fccc-51a7-4518-a546-15fa7e03c250.png)
-
-![image](https://user-images.githubusercontent.com/81003470/147715323-62f7558d-d23f-4ac3-8fd5-b572e3bd366d.png)
-
-
-
+### Download and Open LabelImg
 
 labelImg = https://tzutalin.github.io/labelImg/
 
