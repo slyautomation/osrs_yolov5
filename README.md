@@ -86,6 +86,10 @@ in the project run main.py, the output should result in the device used as cuda,
   
   ![image](https://user-images.githubusercontent.com/81003470/147753127-c97b0ce4-e9c6-49d4-a817-f9a71928e240.png)
 
+  This will also download the yolov5 weight files:
+  
+  ![image](https://user-images.githubusercontent.com/81003470/147753307-5c3df94e-206b-4bac-8f2d-8a5e7301c010.png)
+
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
 
