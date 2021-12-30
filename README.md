@@ -9,7 +9,7 @@ name: GeForce GTX 1060 6GB
 
 pycharm = https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows&code=PCC
 
-Step walkthrough instalisation of pycharm: https://github.com/slyautomation/osrs_yolov5/wiki/How-to-Install-Pycharm
+Step walkthrough Installation of pycharm: https://github.com/slyautomation/osrs_yolov5/wiki/How-to-Install-Pycharm
 
 ### Check your cuda version
 
