@@ -78,6 +78,9 @@ use the latest versions found, i at this point in time found: torch 1.9.1, torch
 
   pip install torchvision==0.11.2+cu102 -f https://download.pytorch.org/whl/torch_stable.html
   
+  ![image](https://user-images.githubusercontent.com/81003470/147749284-9411be6f-f000-4bf9-a167-b0d214b977f5.png)
+
+  
   pip install torchaudio==0.10.1
 
 # Images and XML files for object detection
