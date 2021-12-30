@@ -6,30 +6,23 @@ def download_weights():
     for x in ['s', 'm', 'l', 'x']:
         attempt_download(f'yolov5{x}.pt')
 
-# run download_weights
-# pip install torch===1.9.0+cu102 -f https://download.pytorch.org/whl/torch_stable.html
-# pip install torchvision===0.10.0+cu102 -f https://download.pytorch.org/whl/torch_stable.html
-# pip install torchaudio===0.9.0
 
-def test_cpu():
-    print(torch.__version__)
-    my_tensor = torch.tensor([[1, 2, 3], [4, 5, 6]], dtype=torch.float32, device="cpu")
-    print(my_tensor)
-    torch.cuda.is_available()
-def test_gpu():
-    print(torch.__version__)
+# setting device on GPU if available, else CPU
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+print('Using device:', device)
+print('testing pytorch with cpu first....')
+my_tensor = torch.tensor([[1, 2, 3], [4, 5, 6]], dtype=torch.float32, device="cpu")
+print('result is:', my_tensor)
 
-    print(torch.cuda.is_available())
+#Additional Info when using cuda
+if device.type == 'cuda':
+    print('pytorch version used:', torch.__version__)
+    print('pytorch and cuda is working:', torch.cuda.get_device_name(0))
+    print('pytorch and cuda is active:', print(torch.cuda.is_available()))
+    print('Memory Usage:')
+    print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
+    print('Cached:   ', round(torch.cuda.memory_reserved(0)/1024**3,1), 'GB')
+    my_tensor = torch.tensor([[1, 2, 3], [4, 5, 6]], dtype=torch.float32, device="cuda")
+    print('testing pytorch with cuda...result is:', my_tensor)
 
-    print(torch.cuda.current_device())
-
-    print(torch.cuda.device(0))
-
-    print(torch.cuda.device_count())
-
-    print(torch.cuda.get_device_name(0))
-
-
-test_cpu()
-test_gpu()
 download_weights()
