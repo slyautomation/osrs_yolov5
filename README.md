@@ -56,7 +56,9 @@ pip install -r requirements.txt
 
 ![image](https://user-images.githubusercontent.com/81003470/147746531-aa622ccb-d6a0-4310-85b7-4775f8b0732a.png)
 
+## Check cuda version is compatiable with torch and torchvision
 
+goto website and check version https://download.pytorch.org/whl/torch_stable.html
 
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
