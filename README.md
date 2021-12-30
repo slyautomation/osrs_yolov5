@@ -48,7 +48,9 @@ Step walkthrough adding project with Pycharm: https://github.com/slyautomation/o
 in the terminal type:
 
 -cd venv
+
 -cd scripts
+
 -activate
 
 # Images and XML files for object detection
