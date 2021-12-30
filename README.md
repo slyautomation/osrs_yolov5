@@ -12,6 +12,11 @@ once downloaded: click on the file to start ithe installisation:
 
 ![image](https://user-images.githubusercontent.com/81003470/147712917-e0f87af5-9f67-4fff-a490-4e0958a56871.png)
 
+the installisation program will start click on the next buttons, if applicable uninstall any previous version and 'Uninstall Silently toensure no settings are lost:
+
+![image](https://user-images.githubusercontent.com/81003470/147712972-a4658c10-af2b-4550-8acf-7f3a4523bcc5.png)
+
+
 ### Check your cuda version
 
 type in terminal: nvidia-smi
