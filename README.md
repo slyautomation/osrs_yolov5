@@ -57,6 +57,15 @@ There should be (venv) in front of your project's location in the terminal:
 
 ![image](https://user-images.githubusercontent.com/81003470/147746002-21504567-4224-4d44-9b96-b0334574c4a9.png)
 
+revert location back to default in terminal by typing:
+
+cd ../
+
+cd ../
+
+![image](https://user-images.githubusercontent.com/81003470/147746158-99a99b06-f412-4c1a-ae6c-48c7d5009007.png)
+
+This will ensure all code is executed within the project.
 
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
