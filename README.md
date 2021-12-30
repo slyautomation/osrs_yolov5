@@ -8,6 +8,10 @@ name: GeForce GTX 1060 6GB
 
 pycharm = https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows&code=PCC
 
+once downloaded: click on the file to start ithe installisation:
+
+![image](https://user-images.githubusercontent.com/81003470/147712917-e0f87af5-9f67-4fff-a490-4e0958a56871.png)
+
 ### Check your cuda version
 
 type in terminal: nvidia-smi
