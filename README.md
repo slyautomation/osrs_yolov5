@@ -47,11 +47,16 @@ Step walkthrough adding project with Pycharm: https://github.com/slyautomation/o
 ### Ensure Project is within venv (virtual environment)
 in the terminal type:
 
--cd venv
+cd venv
 
--cd scripts
+cd scripts
 
--activate
+activate
+
+There should be (venv) in front of your project's location in the terminal:
+
+![image](https://user-images.githubusercontent.com/81003470/147746002-21504567-4224-4d44-9b96-b0334574c4a9.png)
+
 
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
