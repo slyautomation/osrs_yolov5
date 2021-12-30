@@ -69,6 +69,16 @@ use the latest versions found, i at this point in time found: torch 1.9.1, torch
   ![image](https://user-images.githubusercontent.com/81003470/147748717-b843b377-cb25-449f-bd79-7e379fe3d523.png)
 
   ![image](https://user-images.githubusercontent.com/81003470/147748757-9c668269-bdf7-4bad-8521-bf1f63940684.png)
+  
+  in the terminal type the torch version + your cuda version (except for torchaudio no cuda version required):
+  
+  pip install torch==1.9.1+cu102 -f https://download.pytorch.org/whl/torch_stable.html
+  
+  ![image](https://user-images.githubusercontent.com/81003470/147749033-c5de2a74-5365-444c-93c1-f5d9f75512c4.png)
+
+  pip install torchvision==0.11.2+cu102 -f https://download.pytorch.org/whl/torch_stable.html
+  
+  pip install torchaudio==0.10.1
 
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
