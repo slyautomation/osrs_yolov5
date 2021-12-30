@@ -20,6 +20,10 @@ Make sure to check the boxes for updating the PATH Variable and create associati
 
 ![image](https://user-images.githubusercontent.com/81003470/147713061-8eed0194-0ed9-4323-9695-bb621980a432.png)
 
+Next reboot pc to ensure pycharm is fully installed:
+
+![image](https://user-images.githubusercontent.com/81003470/147713102-599ad90a-51fc-4a66-b8e1-6c7d523e719c.png)
+
 ### Check your cuda version
 
 type in terminal: nvidia-smi
