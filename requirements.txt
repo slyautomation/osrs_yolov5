@@ -70,9 +70,7 @@ termcolor==1.1.0
 tf2onnx==1.5.3
 thop==0.0.31.post2005241907
 threadpoolctl==2.2.0
-torch==1.9.0+cu102
 torchaudio==0.9.0
-torchvision==0.10.0+cu102
 tqdm==4.62.2
 typing==3.7.4.3
 typing-extensions==3.7.4.3
