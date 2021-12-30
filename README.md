@@ -6,15 +6,25 @@ name: GeForce GTX 1060 6GB
 
 type in terminal:
 
+### Check your cuda version
+
+type nvidia-smi
+
+![image](https://user-images.githubusercontent.com/81003470/147712277-5b1fae1d-33b2-4ff0-a4de-19ef762e1b14.png)
+
+my version that i can use is up to: 11.5 but for simplicity i can use previous versions namely 10.0 and 10.2
+
+cuda 10.0 = https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_411.31_win10
+
+cudnn = https://developer.nvidia.com/rdp/cudnn-archive#a-collapse765-10
+
 pip install -r requirements.txt
 
 Check if your gpu will work: https://developer.nvidia.com/cuda-gpus and use the cuda for your model and the latest cudnn for the cuda version.
 
 pycharm = https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows&code=PCC
 
-cuda 10.0 = https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_411.31_win10
 
-cudnn = https://developer.nvidia.com/rdp/cudnn-archive#a-collapse765-10
 
 labelImg = https://tzutalin.github.io/labelImg/
 
