@@ -94,7 +94,25 @@ in the project run main.py, the output should result in the device used as cuda,
   
 <p><a href="https://www.kaggle.com/ultralytics/coco128" rel="nofollow">COCO128</a> is an example small tutorial dataset composed of the first 128 images in <a href="http://cocodataset.org/#home" rel="nofollow">COCO</a> train2017. These same 128 images are used for both training and validation to verify our training pipeline is capable of overfitting. <a href="https://github.com/ultralytics/yolov5/blob/master/data/coco128.yaml">data/coco128.yaml</a>, shown below, is the dataset config file that defines 1) the dataset root directory <code>path</code> and relative paths to <code>train</code> / <code>val</code> / <code>test</code> image directories (or *.txt files with image paths), 2) the number of classes <code>nc</code> and 3) a list of class <code>names</code>:</p>
   
-  https://github.com/slyautomation/osrs_yolov5/blob/d6033d3114b71f8ebb9e31d60ed2208d510968b0/data/coco128.yaml#L1
+```
+# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
+path: ../datasets/coco128  # dataset root dir
+train: images/train2017  # train images (relative to 'path') 128 images
+val: images/train2017  # val images (relative to 'path') 128 images
+test:  # test images (optional)
+
+# Classes
+nc: 80  # number of classes
+names: [ 'person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light',
+         'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow',
+         'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee',
+         'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard',
+         'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple',
+         'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch',
+         'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone',
+         'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear',
+         'hair drier', 'toothbrush' ]  # class names
+  ```
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
 
