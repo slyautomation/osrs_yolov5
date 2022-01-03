@@ -135,7 +135,9 @@ nc: 1  # number of classes
 names: ['cow']  # class names
 
 ```
-  
+To start using <a href="https://github.com/slyautomation/osrs_yolov5/blob/master/data/osrs.yaml">data/osrs.yaml</a> run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/extract_osrs_zip.py">extract_osrs_zip.py</a>, this will unzip the cow.zip.001, cow.zip.002 and cow.zip.003 files.
+and create a folder in datasets osrs ready to train the osrs cow model.
+
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
 
