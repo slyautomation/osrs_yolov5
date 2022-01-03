@@ -157,6 +157,8 @@ python train.py --data osrs.yaml --weights yolov5s.pt --batch-size 2 --epoch 200
   
 This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/train.py">train.py</a> with the parameters mentioned above.
 
+![image](https://user-images.githubusercontent.com/81003470/147908948-10a1de98-4eb5-449e-8e24-92e421139b49.png)
+
 ### Troubleshooting
   
 Runtimeerror on Train.py: make sure there is enough hard drive storage space, the models will need approx 20 gbs of space to run smoothly.
