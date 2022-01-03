@@ -159,6 +159,12 @@ This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/tr
 
 ![image](https://user-images.githubusercontent.com/81003470/147908948-10a1de98-4eb5-449e-8e24-92e421139b49.png)
 
+### Training Finished
+
+Once finished the resulting model best.pt and last.pt will be saved in the folder runs/train/exp<number>
+  
+![image](https://user-images.githubusercontent.com/81003470/147910872-6700f739-232e-42f4-a210-479dd7c12734.png)
+
 ### Troubleshooting
   
 Runtimeerror on Train.py: make sure there is enough hard drive storage space, the models will need approx 20 gbs of space to run smoothly.
