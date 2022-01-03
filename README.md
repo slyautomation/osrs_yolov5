@@ -113,6 +113,29 @@ names: [ 'person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', '
          'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear',
          'hair drier', 'toothbrush' ]  # class names
   ```
+Copying the method above i have done the same with <a href="https://github.com/slyautomation/osrs_yolov5/blob/master/data/osrs.yaml">data/osrs.yaml</a> 
+  
+```
+# parent
+# ├── yolov5
+# └── datasets
+#     └── osrs ← downloads here
+#       └── cow ← add each class
+  #     └── xxx ← add each class
+
+
+# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
+path: ./datasets/osrs  # dataset root dir
+train: train/ # train images (relative to 'path') 128 images
+val: test/  # val images (relative to 'path') 128 images
+test:  # test images (optional)
+
+# Classes
+nc: 1  # number of classes
+names: ['cow']  # class names
+
+```
+  
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
 
