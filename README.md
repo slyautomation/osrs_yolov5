@@ -141,10 +141,13 @@ and will create a folder in datasets osrs ready to train the osrs cow model.
 ### Training
 
 Epochs. Start with 300 epochs. If this overfits early then you can reduce epochs. If overfitting does not occur after 300 epochs, train longer, i.e. 600, 1200 etc epochs.
+
 Image size. COCO trains at native resolution of --img 640, though due to the high amount of small objects in the dataset it can benefit from training at higher resolutions such as --img 1280. If there are many small objects then custom datasets will benefit from training at native or higher resolution. Best inference results are obtained at the same --img as the training was run at, i.e. if you train at --img 1280 you should also test and detect at --img 1280.
+
 Batch size. Use the largest --batch-size that your hardware allows for. Small batch sizes produce poor batchnorm statistics and should be avoided.
 In the terminal type:
 
+For more information and tips on datasets, model selection and training settings refer to: https://github.com/ultralytics/yolov5/wiki/Tips-for-Best-Training-Results
   
 This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/train.py">train.py</a> with the parameters mentioned above.
   
