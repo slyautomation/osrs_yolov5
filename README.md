@@ -156,10 +156,8 @@ python train.py --data osrs.yaml --weights yolov5s.pt --batch-size 2 --epoch 200
 ![image](https://user-images.githubusercontent.com/81003470/147907954-cd20c621-d848-49e3-83a5-45032ba768ba.png)
   
 This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/train.py">train.py</a> with the parameters mentioned above.
+
+### Troubleshooting
   
-# Images and XML files for object detection
-example unzip files: cows.z01 , cows.z02 , cows.z03
-
-add image and xml files to folder OID//Dataset//train//name of class
-
-***** IMAGES MUST BE IN JPG FORMAT (use png_jpg to convert png files to jpg files) *******
+Runtimeerror on Train.py: make sure there is enough hard drive storage space, the models will need approx 20 gbs of space to run smoothly.
+  
