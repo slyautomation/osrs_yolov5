@@ -126,8 +126,8 @@ Copying the method above i have done the same with <a href="https://github.com/s
 
 # Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
 path: ./datasets/osrs  # dataset root dir
-train: train/ # train images (relative to 'path') 128 images
-val: test/  # val images (relative to 'path') 128 images
+train: images/ # train images (relative to 'path') 128 images
+val: images/  # val images (relative to 'path') 128 images
 test:  # test images (optional)
 
 # Classes
@@ -148,6 +148,12 @@ Batch size. Use the largest --batch-size that your hardware allows for. Small ba
 In the terminal type:
 
 For more information and tips on datasets, model selection and training settings refer to: https://github.com/ultralytics/yolov5/wiki/Tips-for-Best-Training-Results
+
+The setting i found useful with a GeForce GTX 1060 6GB gpu are as follows. In the terminal type:
+
+python train.py --data osrs.yaml --weights yolov5s.pt --batch-size 2 --epoch 200 
+  
+![image](https://user-images.githubusercontent.com/81003470/147907954-cd20c621-d848-49e3-83a5-45032ba768ba.png)
   
 This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/train.py">train.py</a> with the parameters mentioned above.
   
