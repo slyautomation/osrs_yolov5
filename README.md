@@ -90,7 +90,7 @@ in the project run main.py, the output should result in the device used as cuda,
   
   ![image](https://user-images.githubusercontent.com/81003470/147753307-5c3df94e-206b-4bac-8f2d-8a5e7301c010.png)
 
-# Custom training
+# Custom training setup with YAML
   
 <p><a href="https://www.kaggle.com/ultralytics/coco128" rel="nofollow">COCO128</a> is an example small tutorial dataset composed of the first 128 images in <a href="http://cocodataset.org/#home" rel="nofollow">COCO</a> train2017. These same 128 images are used for both training and validation to verify our training pipeline is capable of overfitting. <a href="https://github.com/ultralytics/yolov5/blob/master/data/coco128.yaml">data/coco128.yaml</a>, shown below, is the dataset config file that defines 1) the dataset root directory <code>path</code> and relative paths to <code>train</code> / <code>val</code> / <code>test</code> image directories (or *.txt files with image paths), 2) the number of classes <code>nc</code> and 3) a list of class <code>names</code>:</p>
   
@@ -135,9 +135,19 @@ nc: 1  # number of classes
 names: ['cow']  # class names
 
 ```
-To start using <a href="https://github.com/slyautomation/osrs_yolov5/blob/master/data/osrs.yaml">data/osrs.yaml</a> run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/extract_osrs_zip.py">extract_osrs_zip.py</a>, this will unzip the cow.zip.001, cow.zip.002 and cow.zip.003 files.
-and create a folder in datasets osrs ready to train the osrs cow model.
+To start using <a href="https://github.com/slyautomation/osrs_yolov5/blob/master/data/osrs.yaml">data/osrs.yaml</a> run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/extract_osrs_zip.py">extract_osrs_zip.py</a>, this will unzip the cow.zip.001, cow.zip.002 and cow.zip.003 files
+and will create a folder in datasets osrs ready to train the osrs cow model.
 
+### Training
+
+Epochs. Start with 300 epochs. If this overfits early then you can reduce epochs. If overfitting does not occur after 300 epochs, train longer, i.e. 600, 1200 etc epochs.
+Image size. COCO trains at native resolution of --img 640, though due to the high amount of small objects in the dataset it can benefit from training at higher resolutions such as --img 1280. If there are many small objects then custom datasets will benefit from training at native or higher resolution. Best inference results are obtained at the same --img as the training was run at, i.e. if you train at --img 1280 you should also test and detect at --img 1280.
+Batch size. Use the largest --batch-size that your hardware allows for. Small batch sizes produce poor batchnorm statistics and should be avoided.
+In the terminal type:
+
+  
+This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/train.py">train.py</a> with the parameters mentioned above.
+  
 # Images and XML files for object detection
 example unzip files: cows.z01 , cows.z02 , cows.z03
 
