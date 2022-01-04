@@ -213,6 +213,8 @@ See below examples on amazon under $20:
   
 -<a target="_blank" href="https://www.amazon.com.au/gp/product/B097YC56QH/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B097YC56QH&linkCode=as2&tag=slyautomation-22&linkId=6401772c54cb0d307a4955953cb207ab">MSY Upgraded Version HDMI to USB 3.0 Video Capture Card Recorder Streaming Max HD 1080P with Cable for Game Video Live</a>
 
+  ![image](https://user-images.githubusercontent.com/81003470/148017729-936a78d4-4cb3-4cdf-8158-752c2688692d.png)
+
 ### Troubleshooting
   
 Runtimeerror on Train.py: make sure there is enough hard drive storage space, the models will need approx 20 gbs of space to run smoothly.
