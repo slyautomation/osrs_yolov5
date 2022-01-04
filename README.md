@@ -234,6 +234,8 @@ For a constant stream of the monitor display, in the terminal run:
 
 This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect_screenshots.py">detect_screenshots.py</a> with the default parameters listed below and can be changed to suit your needs.
 
+For the users that prefer using object orientated programming scripts refer to <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect_oob_screenshots">detect_oob_screenshots.py</a>
+  
 ```
 def main_auto():
     #check_requirements(exclude=('tensorboard', 'thop'))
@@ -270,6 +272,8 @@ See below examples on amazon under $20:
 -<a target="_blank" href="https://www.amazon.com.au/gp/product/B097YC56QH/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B097YC56QH&linkCode=as2&tag=slyautomation-22&linkId=6401772c54cb0d307a4955953cb207ab">MSY Upgraded Version HDMI to USB 3.0 Video Capture Card Recorder Streaming Max HD 1080P with Cable for Game Video Live</a>
 
 ![image](https://user-images.githubusercontent.com/81003470/148019089-7c226fd6-382a-4da6-ab37-e8a66a3e838a.png)
+  
+## Retrain using Detections
   
 
 ### Troubleshooting
