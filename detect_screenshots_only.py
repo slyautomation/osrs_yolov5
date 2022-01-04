@@ -37,8 +37,9 @@ from utils.torch_utils import select_device, time_sync
 def GRABMSS_screen():
     #im = ImageGrab.grab(bbox=monitor) # left , top , right, bottom
     im = ImageGrab.grab()  # left , top , right, bottom
-    im.save('fullscreen.png', 'png')
-    return 'fullscreen.png'
+    im.save('fullscreen.jpg')
+    im.close()
+    return 'fullscreen.jpg'
 
 def click_object(box):
     x = int(box[0])
@@ -63,7 +64,6 @@ def run(weights='best.pt',  # model.pt path(s)
         save_txt=False,  # save results to *.txt
         save_conf=False,  # save confidences in --save-txt labels
         save_crop=False,  # save cropped prediction boxes
-        nosave=False,  # do not save images/videos
         classes=None,  # filter by class: --class 0, or --class 0 2 3
         agnostic_nms=False,  # class-agnostic NMS
         augment=False,  # augmented inference
@@ -83,7 +83,6 @@ def run(weights='best.pt',  # model.pt path(s)
     date_time = datetime.datetime.fromtimestamp(t_end)
     print(date_time)
     global fps, display_time, start_time
-    save_img = not nosave  # save inference images
 
     # Initialize
     set_logging()
@@ -125,6 +124,8 @@ def run(weights='best.pt',  # model.pt path(s)
             t2 = time_sync()
             # Process predictions
             for i, det in enumerate(pred):  # detections per image
+                if len(det) == 0:
+                    break
                 p, s, im0, frame = path, '', im0s.copy(), getattr(dataset, 'frame', 0)
                 p = Path(p)  # to Path
                 s += '%gx%g ' % img.shape[2:]  # print string
@@ -146,19 +147,12 @@ def run(weights='best.pt',  # model.pt path(s)
                             with open(str(increment_path(save_dir / 'labels' / f'{p.stem}_full_{frame}.txt', mkdir=True).with_suffix('.txt')), 'w+') as f:
                                 f.write(('%g ' * len(line)).rstrip() % line + '\n')
                                 f.close()
-                        if save_img or save_crop or view_img:  # Add bbox to image
+                        if save_crop:  # Add bbox to image
                             c = int(cls)  # integer class
                             label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
                             im0 = plot_one_box(xyxy, im0, label=label, color=colors(c, True), line_width=line_thickness)
-                            if save_crop:
-                                save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
-                                cv2.imwrite(str(increment_path(save_dir / 'crops' / f'{p.stem}_full_{frame}.jpg',
-                                                       mkdir=True).with_suffix('.jpg')), imc)
-
-
-                    #print('im0:', im0)
-                    #print('xyxy', xyxy)
-                    #print('label:', label)
+                            save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
+                            cv2.imwrite(str(increment_path(save_dir / 'crops' / f'{p.stem}_full_{frame}.jpg', mkdir=True).with_suffix('.jpg')), imc)
                     if time.time() > time_clicked and float(conf) > 0.9 and Enable_clicks:
                         click_object(xyxy)
                         time_clicked = time.time() + 10
@@ -169,10 +163,9 @@ def run(weights='best.pt',  # model.pt path(s)
                 if view_img:
                     # cv2.destroyAllWindows()
                     cv2.imshow('aimbot', im0)
-
                     cv2.waitKey(1)
 
-        os.remove("fullscreen.png")
+        os.remove("fullscreen.jpg")
         print(f'Done. ({time.time() - t0:.3f}s)')
         fps += 1
         TIME = time.time() - start_time
@@ -189,11 +182,10 @@ def main_auto():
         iou_thres=0.45,  # NMS IOU threshold
         max_det=10,  # maximum detections per image
         device='0',  # cuda device, i.e. 0 or 0,1,2,3 or cpu
-        view_img=True,  # show results
-        save_txt=True,  # save results to *.txt
+        view_img=False,  # show results
+        save_txt=False,  # save results to *.txt
         save_conf=False,  # save confidences in --save-txt labels
-        save_crop=True,  # save cropped prediction boxes
-        nosave=False,  # do not save images/videos
+        save_crop=False,  # save cropped prediction boxes
         classes=None,  # filter by class: --class 0, or --class 0 2 3
         agnostic_nms=False,  # class-agnostic NMS
         augment=False,  # augmented inference
