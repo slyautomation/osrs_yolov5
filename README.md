@@ -207,13 +207,14 @@ The standard command i write, In the terminal type:
   
 This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect.py">detect.py</a> with the parameters mentioned above.
   
-To increase the fps (frames per second) and get a better detection rate use a hdmi data capture device:
+To increase the fps (frames per second) and get a better detection rate, i use a hdmi data capture device:
 
 See below examples on amazon under $20:
   
 -<a target="_blank" href="https://www.amazon.com.au/gp/product/B097YC56QH/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B097YC56QH&linkCode=as2&tag=slyautomation-22&linkId=6401772c54cb0d307a4955953cb207ab">MSY Upgraded Version HDMI to USB 3.0 Video Capture Card Recorder Streaming Max HD 1080P with Cable for Game Video Live</a>
 
-  ![image](https://user-images.githubusercontent.com/81003470/148017729-936a78d4-4cb3-4cdf-8158-752c2688692d.png)
+![PXL_20220104_062412202_2](https://user-images.githubusercontent.com/81003470/148018116-2cb417dd-d983-4b26-b678-7249c4b4900b.jpg)
+  
 
 ### Troubleshooting
   
