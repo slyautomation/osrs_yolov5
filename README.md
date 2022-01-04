@@ -185,10 +185,10 @@ This will run the default yolov5s weight file on the bus image and store the res
   These are the labels (the first integer is the class index and the rest are coordinates and bounding areas of the object)
 
 ```
-5 0.502469 0.466204 0.995062 0.547222
-0 0.917284 0.59213 0.162963 0.450926
-0 0.17284 0.603241 0.222222 0.469444
-0 0.35 0.588889 0.146914 0.424074
+5 0.502469 0.466204 0.995062 0.547222 # bus
+0 0.917284 0.59213 0.162963 0.450926 # person
+0 0.17284 0.603241 0.222222 0.469444 # person
+0 0.35 0.588889 0.146914 0.424074 # person
 ```
  
   Here is the resulting image with bounding boxes identifying the bus and people:
