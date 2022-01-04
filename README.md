@@ -169,12 +169,12 @@ Once finished the resulting model best.pt and last.pt will be saved in the folde
 
 # Detecting
 
-This is where the detecting of objects take place, based on the parameters given, the code will run the default or custom weights and identfy objects (inference) in 
+This is where the detecting of objects take place, based on the parameters given, the code will run the default or custom weights and identify objects (inference) in 
 images, videos, directories, streams, etc.
   
 ## Test Dectections
 
-To run a test to ensure all is installed correctly in the terminal type:
+Run a test to ensure all is installed correctly, in the terminal type:
 
 ```python detect.py --source data/images/bus.jpg --weights yolov5s.pt --img 640```
 
@@ -182,7 +182,7 @@ To run a test to ensure all is installed correctly in the terminal type:
 
 This will run the default yolov5s weight file on the bus image and store the results in runs/detect/exp
 
-  These are the labels (the first integer is the class index and the rest are coordinates and bounding areas of the object)
+These are the labels (the first integer is the class index and the rest are coordinates and bounding areas of the object)
 
 ```
 5 0.502469 0.466204 0.995062 0.547222 # bus
@@ -191,10 +191,15 @@ This will run the default yolov5s weight file on the bus image and store the res
 0 0.35 0.588889 0.146914 0.424074 # person
 ```
  
-  Here is the resulting image with bounding boxes identifying the bus and people:
+Here is the resulting image with bounding boxes identifying the bus and people:
   
-  ![bus](https://user-images.githubusercontent.com/81003470/148015666-65439829-1856-435f-a8d0-eea7b9baade0.jpg)
+![bus](https://user-images.githubusercontent.com/81003470/148015666-65439829-1856-435f-a8d0-eea7b9baade0.jpg)
 
+## Test Custom Detections (osrs cows model)
+
+Let's see how the osrs cow detection, to test in the terminal type:
+  
+``` python detect.py --source data/images/bus.jpg --weights yolov5s.pt --img 640```
   
 The standard command i write, In the terminal type:
 
