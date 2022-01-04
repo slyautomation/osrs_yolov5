@@ -253,7 +253,6 @@ def main_auto():
         line_thickness=1,  # bounding box thickness (pixels)
         hide_labels=False,  # hide labels
         hide_conf=False,  # hide confidences
-        half=False,  # use FP16 half-precision inference
         Run_Duration_hours=6,  # how long to run code for in hours
         Enable_clicks=False
         )
