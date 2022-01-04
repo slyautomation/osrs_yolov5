@@ -228,11 +228,11 @@ For a single screenshot, in the terminal type:
 
 For a constant stream of the monitor display, in the terminal run:
   
-```python detect_screenshots_only.py``` or right click on the detect_screenshots_only.py script and select run:
+```python detect_screenshots.py``` or right click on the detect_screenshots_only.py script and select run:
   
 ![image](https://user-images.githubusercontent.com/81003470/148022895-e34e65d6-0b6b-4d64-b9dc-a7b7ab38e148.png)
 
-This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect_screenshots_only.py">detect_screenshots_only.py</a> with the default parameters listed below and can be changed to suit your needs.
+This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect_screenshots.py">detect_screenshots.py</a> with the default parameters listed below and can be changed to suit your needs.
 
 ```
 def main_auto():
