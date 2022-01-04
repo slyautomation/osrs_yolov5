@@ -233,8 +233,6 @@ For a constant stream of the monitor display, in the terminal run:
 ![image](https://user-images.githubusercontent.com/81003470/148022895-e34e65d6-0b6b-4d64-b9dc-a7b7ab38e148.png)
 
 This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect_screenshots.py">detect_screenshots.py</a> with the default parameters listed below and can be changed to suit your needs.
-
-For the users that prefer using object orientated programming scripts refer to <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect_oob_screenshots">detect_oob_screenshots.py</a>
   
 ```
 def main_auto():
@@ -258,6 +256,8 @@ def main_auto():
         Enable_clicks=False # set to true to click on the objects with the mouse
         )
  ```
+
+For the users that prefer using object orientated programming scripts refer to <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect_oob_screenshots">detect_oob_screenshots.py</a>
   
 ## Test Custom Detections (osrs cows model) on Data Capture
   
