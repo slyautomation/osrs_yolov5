@@ -180,6 +180,23 @@ def image_to_text(preprocess, image):
     # cv2.imshow("Output", gray)
     # cv2.waitKey(0)
 
+def change_brown_black():
+    # Load the aerial image and convert to HSV colourspace
+    image = cv2.imread("textshot.png")
+    #hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    # define the list of boundaries
+    # BGR
+    # Define lower and uppper limits of what we call "brown"
+    brown_lo = np.array([0, 0, 0])
+    brown_hi = np.array([60, 80, 85])
+
+    # Mask image to only select browns
+    mask = cv2.inRange(image, brown_lo, brown_hi)
+
+    # Change image to red where we found brown
+    image[mask > 0] = (0, 0, 0)
+
+    cv2.imwrite("textshot.png", image)
 
 def resizeImage():
     png = GRABMSS_screen_text()
@@ -194,16 +211,19 @@ def resizeImage():
     new_size = (width * 4, height * 4)
     im1 = im.resize(new_size)
     im1.save('textshot.png')
+    change_brown_black()
 
-
-def click_attack(x, y):
-    b = random.uniform(0.05, 0.09)
-    x = random.uniform(x - 2.5, x + 2.5)
-    y = random.uniform(y - 2.5, y + 2.5)
-    c = random.uniform(0.03, 0.06)
-    pyautogui.moveTo(x, y, duration=b)
-    time.sleep(c)
-    pyautogui.click(x, y, 1, button='left')
+def click_attack(box):
+    x = int(box[0])
+    y = int(box[1])
+    x2 = int(box[2])
+    y2 = int(box[3])
+    print('| x:', x, '| y:', y)
+    d = random.uniform(0.01, 0.05)
+    # pyautogui.moveTo(round((x+x2)/2,0), round((y+y2)/2,0), duration=d) # center click
+    pyautogui.moveTo(round((x + x2) / 2, 0), round((y + (y * 0.1)), 0), duration=d)  # 10% upper (head) click
+    d = random.uniform(0.01, 0.05)
+    pyautogui.click(button='left', duration=d)
 
 def GRABMSS_screen():
     im = ImageGrab.grab(bbox=monitor) # left , top , right, bottom
@@ -268,10 +288,7 @@ def SHOWMSS_screen():
             if float(conf) > 0.8 and attack > c:
                 print(object)
                 if object != "Cow" and object != "Cou" and object != "Cow calf":
-                    mid_x = (xyxy[0] + xyxy[2])/2 + 40
-                    mid_y = (xyxy[1] + xyxy[3])/2
-                    pyautogui.moveTo(mid_x,mid_y)
-                    click_attack(mid_x, mid_y)
+                    click_attack(xyxy)
                     shoot_time = time.time()
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 cv2.destroyAllWindows()
@@ -286,7 +303,7 @@ def SHOWMSS_screen():
 
 
 weights = 'best.pt'  # model.pt path(s)
-source = 'data/images'  # file/dir/URL/glob, 0 for webcam
+source = 'fullscreen.png'  # file/dir/URL/glob, 0 for webcam
 imgsz = [640, 640]  # inference size (pixels)
 conf_thres = 0.7  # confidence threshold
 iou_thres = 0.45  # NMS IOU threshold
