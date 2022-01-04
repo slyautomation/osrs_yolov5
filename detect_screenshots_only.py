@@ -1,5 +1,3 @@
-# YOLOv5 🚀 by Ultralytics, GPL-3.0 license
-
 import datetime
 import os
 import random
