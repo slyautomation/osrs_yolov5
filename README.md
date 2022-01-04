@@ -220,9 +220,11 @@ And here's the image result:
   
 ![image](https://user-images.githubusercontent.com/81003470/148021301-f7c58ad1-bc2e-43af-a82f-71a929d5a0cc.png)
 
-The standard command i write, In the terminal type:
+## Test Custom Detections (osrs cows model) on Monitor Display (screenshots with Pillow ImageGrab)
+ 
+In the terminal type:
 
-```python detect.py --source 'stream.jpg' --weights best.pt --img 640 --use-screen True```
+```python detect.py --source stream.jpg --weights best.pt --img 640 --use-screen ```
   
 This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect.py">detect.py</a> with the parameters mentioned above.
 
