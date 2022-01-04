@@ -222,10 +222,16 @@ And here's the image result:
 
 ## Test Custom Detections (osrs cows model) on Monitor Display (screenshots with Pillow ImageGrab)
  
-In the terminal type:
+For a single screenshot, in the terminal type:
 
 ```python detect.py --source stream.jpg --weights best.pt --img 640 --use-screen ```
+
+For a constant stream of the monitor display, in the terminal run:
   
+```python detect_screenshots_only.py``` or right click on the detect_screenshots_only.py script and select run:
+  
+![image](https://user-images.githubusercontent.com/81003470/148022895-e34e65d6-0b6b-4d64-b9dc-a7b7ab38e148.png)
+
 This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect.py">detect.py</a> with the parameters mentioned above.
 
 ## Test Custom Detections (osrs cows model) on Data Capture
