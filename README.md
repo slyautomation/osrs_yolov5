@@ -232,8 +232,31 @@ For a constant stream of the monitor display, in the terminal run:
   
 ![image](https://user-images.githubusercontent.com/81003470/148022895-e34e65d6-0b6b-4d64-b9dc-a7b7ab38e148.png)
 
-This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect.py">detect.py</a> with the parameters mentioned above.
+This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect_screenshots_only.py">detect_screenshots_only.py</a> with the default parameters listed below and can be changed to suit your needs.
 
+```
+def main_auto():
+    #check_requirements(exclude=('tensorboard', 'thop'))
+    run(weights='best.pt',  # model.pt path(s)
+        imgsz=[640,640],  # inference size (pixels)
+        conf_thres=0.7,  # confidence threshold
+        iou_thres=0.45,  # NMS IOU threshold
+        max_det=10,  # maximum detections per image
+        device='0',  # cuda device, i.e. 0 or 0,1,2,3 or cpu
+        view_img=True,  # show results
+        classes=None,  # filter by class: --class 0, or --class 0 2 3
+        agnostic_nms=False,  # class-agnostic NMS
+        augment=False,  # augmented inference
+        visualize=False,  # visualize features
+        line_thickness=1,  # bounding box thickness (pixels)
+        hide_labels=False,  # hide labels
+        hide_conf=False,  # hide confidences
+        half=False,  # use FP16 half-precision inference
+        Run_Duration_hours=6,  # how long to run code for in hours
+        Enable_clicks=False # set to true to click on the objects with the mouse
+        )
+ ```
+  
 ## Test Custom Detections (osrs cows model) on Data Capture
   
 To increase the fps (frames per second) and get a better detection rate, i use a hdmi data capture device. This takes a data stream of your monitor displays and sends the data like a webcam, which results in a significant increase in fps compared to taking screenshots of the screen:
