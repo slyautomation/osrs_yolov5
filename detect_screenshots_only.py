@@ -1,3 +1,4 @@
+
 import datetime
 import os
 import random
@@ -29,7 +30,7 @@ monitor = (240, 200, 1040,800)
 from models.experimental import attempt_load
 from utils.datasets import LoadImages
 from utils.general import check_img_size, check_requirements, colorstr, non_max_suppression, \
-    scale_coords, set_logging
+    scale_coords, set_logging, increment_path, xyxy2xywh, save_one_box
 from utils.plots import colors, plot_one_box
 from utils.torch_utils import select_device, time_sync
 
@@ -59,26 +60,39 @@ def run(weights='best.pt',  # model.pt path(s)
         max_det=10,  # maximum detections per image
         device='0',  # cuda device, i.e. 0 or 0,1,2,3 or cpu
         view_img=True,  # show results
+        save_txt=False,  # save results to *.txt
+        save_conf=False,  # save confidences in --save-txt labels
+        save_crop=False,  # save cropped prediction boxes
+        nosave=False,  # do not save images/videos
         classes=None,  # filter by class: --class 0, or --class 0 2 3
         agnostic_nms=False,  # class-agnostic NMS
         augment=False,  # augmented inference
         visualize=False,  # visualize features
+        project='runs/detect',  # save results to project/name
+        name='exp',  # save results to project/name
+        exist_ok=False,  # existing project/name ok, do not increment
         line_thickness=1,  # bounding box thickness (pixels)
         hide_labels=False,  # hide labels
         hide_conf=False,  # hide confidences
         half=False,  # use FP16 half-precision inference
         Run_Duration_hours=6, # how long to run code for in hours
-        Enable_clicks=True # will click on the class objects when confidence is greater than 90%
+        Enable_clicks=False # will click on the class objects when confidence is greater than 90%
         ):
     t_end = time.time() + (60 * 60 * Run_Duration_hours)
     # using the datetime.fromtimestamp() function
     date_time = datetime.datetime.fromtimestamp(t_end)
     print(date_time)
     global fps, display_time, start_time
+    save_img = not nosave  # save inference images
+
     # Initialize
     set_logging()
     device = select_device(device)
     half &= device.type != 'cpu'  # half precision only supported on CUDA
+
+    # Directories
+    save_dir = increment_path(Path(project) / name, exist_ok=exist_ok)  # increment run
+    (save_dir / 'labels' if save_txt else save_dir).mkdir(parents=True, exist_ok=True)  # make dir
 
     # Load model
     model = attempt_load(weights, map_location=device)  # load FP32 model
@@ -103,7 +117,6 @@ def run(weights='best.pt',  # model.pt path(s)
             img = img / 255.0  # 0 - 255 to 0.0 - 1.0
             if len(img.shape) == 3:
                 img = img[None]  # expand for batch dim
-
             # Inference
             t1 = time_sync()
             pred = model(img, augment=augment, visualize=visualize)[0]
@@ -115,6 +128,8 @@ def run(weights='best.pt',  # model.pt path(s)
                 p, s, im0, frame = path, '', im0s.copy(), getattr(dataset, 'frame', 0)
                 p = Path(p)  # to Path
                 s += '%gx%g ' % img.shape[2:]  # print string
+                gn = torch.tensor(im0.shape)[[1, 0, 1, 0]]  # normalization gain whwh
+                imc = im0.copy() if save_crop else im0  # for save_crop
                 if len(det):
                     # Rescale boxes from img_size to im0 size
                     det[:, :4] = scale_coords(img.shape[2:], det[:, :4], im0.shape).round()
@@ -125,13 +140,24 @@ def run(weights='best.pt',  # model.pt path(s)
 
                     # Write results
                     for *xyxy, conf, cls in reversed(det):
-                        c = int(cls)  # integer class
+                        if save_txt:  # Write to file
+                            xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
+                            line = (cls, *xywh, conf) if save_conf else (cls, *xywh)  # label format
+                            with open(str(increment_path(save_dir / 'labels' / f'{p.stem}_full_{frame}.txt', mkdir=True).with_suffix('.txt')), 'w+') as f:
+                                f.write(('%g ' * len(line)).rstrip() % line + '\n')
+                                f.close()
+                        if save_img or save_crop or view_img:  # Add bbox to image
+                            c = int(cls)  # integer class
+                            label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
+                            im0 = plot_one_box(xyxy, im0, label=label, color=colors(c, True), line_width=line_thickness)
+                            if save_crop:
+                                save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
+                                cv2.imwrite(str(increment_path(save_dir / 'crops' / f'{p.stem}_full_{frame}.jpg',
+                                                       mkdir=True).with_suffix('.jpg')), imc)
 
-                        label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
-                        #print('label:', label)
-                        im0 = plot_one_box(xyxy, im0, label=label, color=colors(c, True), line_width=line_thickness)
+
                     #print('im0:', im0)
-                    print('xyxy', xyxy)
+                    #print('xyxy', xyxy)
                     #print('label:', label)
                     if time.time() > time_clicked and float(conf) > 0.9 and Enable_clicks:
                         click_object(xyxy)
@@ -145,6 +171,7 @@ def run(weights='best.pt',  # model.pt path(s)
                     cv2.imshow('aimbot', im0)
 
                     cv2.waitKey(1)
+
         os.remove("fullscreen.png")
         print(f'Done. ({time.time() - t0:.3f}s)')
         fps += 1
@@ -156,7 +183,6 @@ def run(weights='best.pt',  # model.pt path(s)
 
 
 def main_auto():
-    #check_requirements(exclude=('tensorboard', 'thop'))
     run(weights='best.pt',  # model.pt path(s)
         imgsz=[640,640],  # inference size (pixels)
         conf_thres=0.7,  # confidence threshold
@@ -164,10 +190,17 @@ def main_auto():
         max_det=10,  # maximum detections per image
         device='0',  # cuda device, i.e. 0 or 0,1,2,3 or cpu
         view_img=True,  # show results
+        save_txt=True,  # save results to *.txt
+        save_conf=False,  # save confidences in --save-txt labels
+        save_crop=True,  # save cropped prediction boxes
+        nosave=False,  # do not save images/videos
         classes=None,  # filter by class: --class 0, or --class 0 2 3
         agnostic_nms=False,  # class-agnostic NMS
         augment=False,  # augmented inference
         visualize=False,  # visualize features
+        project='runs/detect',  # save results to project/name
+        name='exp',  # save results to project/name
+        exist_ok=False,  # existing project/name ok, do not increment
         line_thickness=1,  # bounding box thickness (pixels)
         hide_labels=False,  # hide labels
         hide_conf=False,  # hide confidences
