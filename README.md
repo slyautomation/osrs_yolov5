@@ -82,7 +82,7 @@ use the latest versions found, i at this point in time found: torch 1.10.1 and t
 
 ## Test pytorch and cuda work
   
-in the project run main.py, the output should result in the device used as cuda, and the tensor calculations should run without errors:
+in the project run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/main.py">main.py</a>, the output should result in the device used as cuda, and the tensor calculations should run without errors:
   
   ![image](https://user-images.githubusercontent.com/81003470/147753127-c97b0ce4-e9c6-49d4-a817-f9a71928e240.png)
 
