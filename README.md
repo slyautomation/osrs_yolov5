@@ -64,20 +64,22 @@ goto website and check version https://download.pytorch.org/whl/torch_stable.htm
 
 To take advantage of the gpu and cuda refer to the list for your cuda version search for cu<version of cuda no spaces or fullstops> e.g cu102 for cuda 10.2.
   
-use the latest versions found, i at this point in time found: torch 1.10.1 and torchvision 0.11.2
+use the latest versions found, i at this point in time found: torch 1.9.0 and torchvision 0.10.0 (these 2 module versions so far i have had no issues other versions i get errors when running <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect.py">detect.py</a>)
 
   ![image](https://user-images.githubusercontent.com/81003470/147751626-8be13bfb-e97d-4642-81db-20955f2a41ad.png)
   
   in the terminal type the torch version + your cuda version (except for torchaudio no cuda version required):
   
-  pip install torch==1.10.1+cu102 -f https://download.pytorch.org/whl/torch_stable.html
+  pip install torch==1.9.0+cu102 -f https://download.pytorch.org/whl/torch_stable.html
   
   ![image](https://user-images.githubusercontent.com/81003470/147749033-c5de2a74-5365-444c-93c1-f5d9f75512c4.png)
 
-  pip install torchvision==0.11.2+cu102 -f https://download.pytorch.org/whl/torch_stable.html
+  pip install torchvision==0.10.0+cu102 -f https://download.pytorch.org/whl/torch_stable.html
   
   ![image](https://user-images.githubusercontent.com/81003470/147749284-9411be6f-f000-4bf9-a167-b0d214b977f5.png)
 
+  pip install torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
+  
 - ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Make sure when installing torchvision it doesn't try to install another version due to incompatability, try to either find a later version of torch or use a downgraded version of torchvision. there could be issues if another torch version is installed but the cuda version doesn't align with your gpu.`
 
 ## Test pytorch and cuda work
