@@ -3,8 +3,9 @@
 Run inference on images, videos, directories, streams, etc.
 
 Usage:
-    $ python detect.py --source img.jpg --weights yolov5s.pt --img 640
-    python detect.py --source 0 --weights best.pt --img 640
+    python detect.py --source data/images/bus.jpg --weights yolov5s.pt --img 640 # runs yolo on image 
+    python detect.py --source data/images/stream.jpg --weights best.pt --img 640 --use-screen # takes screenshot of monitor and runs yolo
+    python detect.py --source 0 --weights best.pt --img 640 # runs yolo on webcam or data capture
 """
 
 import argparse
@@ -34,6 +35,10 @@ display_time = 2
 # Set primarry FPS to 0
 fps = 0
 
+def GRABMSS_screen():
+    #im = ImageGrab.grab(bbox=monitor) # left , top , right, bottom
+    im = ImageGrab.grab()  # left , top , right, bottom
+    im.save('data/images/stream.jpg')
 
 @torch.no_grad()
 def run(weights='yolov5s.pt',  # model.pt path(s)
@@ -118,6 +123,7 @@ def run(weights='yolov5s.pt',  # model.pt path(s)
 
     # Dataloader
     if use_screen:
+        GRABMSS_screen()
         print('using display monitor capture')
         view_img = check_imshow()
         cudnn.benchmark = True  # set True to speed up constant image size inference
