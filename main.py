@@ -1,12 +1,14 @@
+import pathlib
+
 from utils.downloads import attempt_download
 import torch
 import torch.onnx
-
+import torchvision.io
 def download_weights():
     for x in ['s', 'm', 'l', 'x']:
         attempt_download(f'yolov5{x}.pt')
 
-
+directory = pathlib.Path(__file__).parent.resolve()
 # setting device on GPU if available, else CPU
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print('Using device:', device)
@@ -24,5 +26,6 @@ if device.type == 'cuda':
     print('Cached:   ', round(torch.cuda.memory_reserved(0)/1024**3,1), 'GB')
     my_tensor = torch.tensor([[1, 2, 3], [4, 5, 6]], dtype=torch.float32, device="cuda")
     print('testing pytorch with cuda...result is:', my_tensor)
-
+    ok = torchvision.io.read_image(str(directory) + "/data/images/cow_osrs_test.png")
+    print(ok)
 download_weights()
