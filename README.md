@@ -140,7 +140,7 @@ names: ['cow']  # class names
 To start using <a href="https://github.com/slyautomation/osrs_yolov5/blob/master/data/osrs.yaml">data/osrs.yaml</a> run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/extract_osrs_zip.py">extract_osrs_zip.py</a>, this will unzip the cow.zip.001, cow.zip.002 and cow.zip.003 files
 and will create a folder in datasets osrs ready to train the osrs cow model.
 
-### Training
+# Training
 
 Epochs. Start with 300 epochs. If this overfits early then you can reduce epochs. If overfitting does not occur after 300 epochs, train longer, i.e. 600, 1200 etc epochs.
 
@@ -161,15 +161,42 @@ This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/tr
 
 ![image](https://user-images.githubusercontent.com/81003470/147908948-10a1de98-4eb5-449e-8e24-92e421139b49.png)
 
-### Training Finished
+## Training Finished
 
 Once finished the resulting model best.pt and last.pt will be saved in the folder runs/train/exp<number>
   
 ![image](https://user-images.githubusercontent.com/81003470/147910872-6700f739-232e-42f4-a210-479dd7c12734.png)
 
-### Detecting
+# Detecting
 
-The sandard command i write, In the terminal type:
+This is where the detecting of objects take place, based on the parameters given, the code will run the default or custom weights and identfy objects (inference) in 
+images, videos, directories, streams, etc.
+  
+## Test Dectections
+
+To run a test to ensure all is installed correctly in the terminal type:
+
+python detect.py --source data/images/bus.jpg --weights yolov5s.pt --img 640
+
+![image](https://user-images.githubusercontent.com/81003470/148015379-5c099720-af00-425a-92b0-0d9e05545cd7.png)
+
+This will run the default yolov5s weight file on the bus image and store the results in runs/detect/exp
+
+  These are the labels (the first integer is the class index and the rest are coordinates and bounding areas of the object)
+
+'''
+5 0.502469 0.466204 0.995062 0.547222
+0 0.917284 0.59213 0.162963 0.450926
+0 0.17284 0.603241 0.222222 0.469444
+0 0.35 0.588889 0.146914 0.424074
+'''
+ 
+  Here is the resulting image with bounding boxes identifying the bus and people:
+  
+  ![bus](https://user-images.githubusercontent.com/81003470/148015666-65439829-1856-435f-a8d0-eea7b9baade0.jpg)
+
+  
+The standard command i write, In the terminal type:
 
 python detect.py --source 'stream.jpg' --weights best.pt --img 640 --use-screen True
   
