@@ -197,7 +197,7 @@ Here is the resulting image with bounding boxes identifying the bus and people:
 
 ## Test Custom Detections (osrs cows model)
 
-Let's see how the osrs cow detection, to test in the terminal type:
+Let's see the results for osrs cow detection, to test in the terminal type:
   
 ``` python detect.py --source data/images/bus.jpg --weights yolov5s.pt --img 640```
   
@@ -206,9 +206,15 @@ The standard command i write, In the terminal type:
 ```python detect.py --source 'stream.jpg' --weights best.pt --img 640 --use-screen True```
   
 This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect.py">detect.py</a> with the parameters mentioned above.
-  
-To increase the fps (frames per second) and get a better detection rate, i use a hdmi data capture device:
 
+## Test Custom Detections (osrs cows model) on Data Capture
+  
+To increase the fps (frames per second) and get a better detection rate, i use a hdmi data capture device. This takes a data stream of your monitor displays and sends the data like a webcam, which results in a significant increase in fps compared to taking screenshots of the screen:
+
+The command i write, in the terminal type:
+  
+```python detect.py --source 0 --weights best.pt --img 640```
+  
 See below examples on amazon under $20:
   
 -<a target="_blank" href="https://www.amazon.com.au/gp/product/B097YC56QH/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B097YC56QH&linkCode=as2&tag=slyautomation-22&linkId=6401772c54cb0d307a4955953cb207ab">MSY Upgraded Version HDMI to USB 3.0 Video Capture Card Recorder Streaming Max HD 1080P with Cable for Game Video Live</a>
