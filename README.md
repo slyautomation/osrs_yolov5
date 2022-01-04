@@ -15,7 +15,7 @@ Step walkthrough Installation of pycharm: https://github.com/slyautomation/osrs_
 
 ### Check your cuda version
 
-type in terminal: nvidia-smi
+type in terminal: ```nvidia-smi```
 
 ![image](https://user-images.githubusercontent.com/81003470/147712277-5b1fae1d-33b2-4ff0-a4de-19ef762e1b14.png)
 
@@ -54,7 +54,7 @@ Step walkthrough activating venv: https://github.com/slyautomation/osrs_yolov5/w
 
 in the terminal type:
 
-pip install -r requirements.txt
+```pip install -r requirements.txt```
 
 ![image](https://user-images.githubusercontent.com/81003470/147746531-aa622ccb-d6a0-4310-85b7-4775f8b0732a.png)
 
@@ -70,15 +70,15 @@ use the latest versions found, i at this point in time found: torch 1.9.0 and to
   
   in the terminal type the torch version + your cuda version (except for torchaudio no cuda version required):
   
-  pip install torch==1.9.0+cu102 -f https://download.pytorch.org/whl/torch_stable.html
+  ```pip install torch==1.9.0+cu102 -f https://download.pytorch.org/whl/torch_stable.html```
   
   ![image](https://user-images.githubusercontent.com/81003470/147749033-c5de2a74-5365-444c-93c1-f5d9f75512c4.png)
 
-  pip install torchvision==0.10.0+cu102 -f https://download.pytorch.org/whl/torch_stable.html
+  ```pip install torchvision==0.10.0+cu102 -f https://download.pytorch.org/whl/torch_stable.html```
   
   ![image](https://user-images.githubusercontent.com/81003470/147749284-9411be6f-f000-4bf9-a167-b0d214b977f5.png)
 
-  pip install torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
+  ```pip install torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html```
   
 - ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Make sure when installing torchvision it doesn't try to install another version due to incompatability, try to either find a later version of torch or use a downgraded version of torchvision. there could be issues if another torch version is installed but the cuda version doesn't align with your gpu.`
 
@@ -153,7 +153,7 @@ For more information and tips on datasets, model selection and training settings
 
 The setting i found useful with a GeForce GTX 1060 6GB gpu are as follows. In the terminal type:
 
-python train.py --data osrs.yaml --weights yolov5s.pt --batch-size 2 --epoch 200 
+```python train.py --data osrs.yaml --weights yolov5s.pt --batch-size 2 --epoch 200``` 
   
 ![image](https://user-images.githubusercontent.com/81003470/147907954-cd20c621-d848-49e3-83a5-45032ba768ba.png)
   
@@ -176,7 +176,7 @@ images, videos, directories, streams, etc.
 
 To run a test to ensure all is installed correctly in the terminal type:
 
-python detect.py --source data/images/bus.jpg --weights yolov5s.pt --img 640
+```python detect.py --source data/images/bus.jpg --weights yolov5s.pt --img 640```
 
 ![image](https://user-images.githubusercontent.com/81003470/148015379-5c099720-af00-425a-92b0-0d9e05545cd7.png)
 
@@ -198,7 +198,7 @@ This will run the default yolov5s weight file on the bus image and store the res
   
 The standard command i write, In the terminal type:
 
-python detect.py --source 'stream.jpg' --weights best.pt --img 640 --use-screen True
+```python detect.py --source 'stream.jpg' --weights best.pt --img 640 --use-screen True```
   
 This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect.py">detect.py</a> with the parameters mentioned above.
   
