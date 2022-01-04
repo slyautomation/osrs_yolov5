@@ -197,10 +197,29 @@ Here is the resulting image with bounding boxes identifying the bus and people:
 
 ## Test Custom Detections (osrs cows model)
 
+Move the trained model located in runs/train/exp<number> to the parent folder (overwrite the previous best.pt):
+
+![image](https://user-images.githubusercontent.com/81003470/148020954-d42a32b0-b741-4791-8b69-300af762966d.png)
+  
 Let's see the results for osrs cow detection, to test in the terminal type:
   
-``` python detect.py --source data/images/bus.jpg --weights yolov5s.pt --img 640```
+``` python detect.py --source data/images/cow_osrs_test.png --weights best.pt --img 640```
+
+The labels results are:
+```
+  0 0.946552 0.362295 0.062069 0.0754098
+0 0.398276 0.460656 0.106897 0.140984
+0 0.426724 0.572131 0.105172 0.140984
+0 0.352586 0.67377 0.122414 0.167213
+0 0.310345 0.898361 0.117241 0.190164
+0 0.151724 0.411475 0.062069 0.180328
+0 0.705172 0.37541 0.0689655 0.127869
+0 0.812931 0.319672 0.087931 0.127869
+  ```
+And here's the image result:
   
+![image](https://user-images.githubusercontent.com/81003470/148021301-f7c58ad1-bc2e-43af-a82f-71a929d5a0cc.png)
+
 The standard command i write, In the terminal type:
 
 ```python detect.py --source 'stream.jpg' --weights best.pt --img 640 --use-screen True```
