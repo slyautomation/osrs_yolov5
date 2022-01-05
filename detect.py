@@ -3,7 +3,7 @@
 Run inference on images, videos, directories, streams, etc.
 
 Usage:
-    python detect.py --source data/images/bus.jpg --weights yolov5s.pt --img 640 # runs yolo on image 
+    python detect.py --source data/images/bus.jpg --weights yolov5s.pt --img 640 # runs yolo on image
     python detect.py --source data/images/stream.jpg --weights best.pt --img 640 --use-screen # takes screenshot of monitor and runs yolo
     python detect.py --source 0 --weights best.pt --img 640 # runs yolo on webcam or data capture
 """
@@ -17,6 +17,7 @@ import cv2
 import numpy as np
 import torch
 import torch.backends.cudnn as cudnn
+from PIL import ImageGrab
 
 FILE = Path(__file__).absolute()
 sys.path.append(FILE.parents[0].as_posix())  # add yolov5/ to path
@@ -128,7 +129,7 @@ def run(weights='yolov5s.pt',  # model.pt path(s)
         view_img = check_imshow()
         cudnn.benchmark = True  # set True to speed up constant image size inference
         img = 'data/images/stream.jpg'
-        dataset = LoadStreams(img, img_size=imgsz, stride=stride, auto=pt)
+        dataset = LoadImages(source, img_size=imgsz, stride=stride, auto=pt)
         bs = len(dataset)  # batch_size
     if webcam:
         view_img = check_imshow()
@@ -287,10 +288,10 @@ def parse_opt():
     parser.add_argument('--iou-thres', type=float, default=0.45, help='NMS IoU threshold')
     parser.add_argument('--max-det', type=int, default=10, help='maximum detections per image')
     parser.add_argument('--device', default='', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
-    parser.add_argument('--view-img', default=True, action='store_true', help='show results')
-    parser.add_argument('--save-txt', default=True, action='store_true', help='save results to *.txt')
+    parser.add_argument('--view-img', default=True, action='store_false', help='show results')
+    parser.add_argument('--save-txt', default=True, action='store_false', help='save results to *.txt')
     parser.add_argument('--save-conf', action='store_true', help='save confidences in --save-txt labels')
-    parser.add_argument('--save-crop', default=True,action='store_true', help='save cropped prediction boxes')
+    parser.add_argument('--save-crop', default=True, action='store_false', help='save cropped prediction boxes')
     parser.add_argument('--nosave', default=False, action='store_true', help='do not save images/videos')
     parser.add_argument('--classes', nargs='+', type=int, help='filter by class: --class 0, or --class 0 2 3')
     parser.add_argument('--agnostic-nms', action='store_true', help='class-agnostic NMS')
@@ -303,8 +304,8 @@ def parse_opt():
     parser.add_argument('--line-thickness', default=1, type=int, help='bounding box thickness (pixels)')
     parser.add_argument('--hide-labels', default=False, action='store_true', help='hide labels')
     parser.add_argument('--hide-conf', default=False, action='store_true', help='hide confidences')
-    parser.add_argument('--half', action='store_true', help='use FP16 half-precision inference')
-    parser.add_argument('--use-screen', default=False, action='store_true', help='set as true to use the screen display with screenshots')
+    parser.add_argument('--half', default=False, action='store_true', help='use FP16 half-precision inference')
+    parser.add_argument('--use-screen', action='store_true', help='set as true to use the screen display with screenshots')
     opt = parser.parse_args()
     opt.imgsz *= 2 if len(opt.imgsz) == 1 else 1  # expand
     return opt
