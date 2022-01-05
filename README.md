@@ -4,10 +4,7 @@
 
 name: GeForce GTX 1060 6GB (average fps 11 on monitor display using screenshots)
 
-<iframe width="420" height="345"
-src="https://youtu.be/rqk0kq4Vu3M">
-</iframe>
-
+https://user-images.githubusercontent.com/81003470/148143834-97b237c1-205c-4e95-b2c7-fb16e9938184.mp4
 
 # Quick Start
 
