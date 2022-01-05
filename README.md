@@ -290,7 +290,7 @@ Move the image files (crops) to datasets/osrs/images or datasets/[name of datase
 
 ![image](https://user-images.githubusercontent.com/81003470/148141478-95fcd5a0-f68c-4f88-b85f-5a17a97234b9.png)
 
-As mentioned above follow the steps for training. 
+As mentioned above follow the steps for <a target="_blank" href="https://github.com/slyautomation/osrs_yolov5/blob/main/README.md#training">training</a>.
 ### Troubleshooting
   
 Runtimeerror on Train.py: make sure there is enough hard drive storage space, the models will need approx 20 gbs of space to run smoothly.
