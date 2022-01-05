@@ -264,7 +264,7 @@ For the users that prefer using object orientated programming scripts refer to <
   
 To increase the fps (frames per second) and get a better detection rate, i use a hdmi data capture device. This takes a data stream of your monitor displays and sends the data like a webcam, which results in a significant increase in fps compared to taking screenshots of the screen:
 
-The command i write, in the terminal type:
+In the terminal type:
   
 ```python detect.py --source 0 --weights best.pt --img 640```
   
@@ -276,6 +276,13 @@ See below examples on amazon under $20:
   
 ## Retrain using Detections
   
+By default detect.py will take labels and fullscreen images while the detection is running. These will be saved under runs/detect/exp<number>, labels in labels folder and images in crops folder.
+
+![image](https://user-images.githubusercontent.com/81003470/148140979-4b7d1bd1-7e5f-4c58-8102-3e860f1b132b.png)
+
+To save labels and images with detect_screenshots.py set save_text and save_crop to True.
+  
+![image](https://user-images.githubusercontent.com/81003470/148141081-8bfd281d-94fb-460c-9b6f-c34494e43553.png)
 
 ### Troubleshooting
   
