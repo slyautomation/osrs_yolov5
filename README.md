@@ -14,7 +14,6 @@ Full Video Tutorial: TBA
 
 ### installing pycharm
 
-
 pycharm = https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows&code=PCC
 
 Step walkthrough Installation of pycharm: https://github.com/slyautomation/osrs_yolov5/wiki/How-to-Install-Pycharm
@@ -44,6 +43,8 @@ Step walkthrough Installation of cuDNN: https://github.com/slyautomation/osrs_yo
 ### Download and Open LabelImg
 
 labelImg = https://tzutalin.github.io/labelImg/
+
+Step walkthrough download and using LabelImg: https://github.com/slyautomation/osrs_yolov5/wiki/Downloading-and-using-LabelImg
 
 ### Using this Repo
 
