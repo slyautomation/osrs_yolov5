@@ -65,19 +65,19 @@ def run(weights='best.pt',  # model.pt path(s)
         save_conf=False,  # save confidences in --save-txt labels
         save_crop=False,  # save cropped prediction boxes
         classes=None,  # filter by class: --class 0, or --class 0 2 3
-        agnostic_nms=False,  # class-agnostic NMS
-        augment=False,  # augmented inference
-        visualize=False,  # visualize features
         project='runs/detect',  # save results to project/name
         name='exp',  # save results to project/name
         exist_ok=False,  # existing project/name ok, do not increment
         line_thickness=1,  # bounding box thickness (pixels)
         hide_labels=False,  # hide labels
         hide_conf=False,  # hide confidences
-        half=False,  # use FP16 half-precision inference
         Run_Duration_hours=6, # how long to run code for in hours
         Enable_clicks=False # will click on the class objects when confidence is greater than 90%
         ):
+    agnostic_nms = False,  # class-agnostic NMS
+    augment = False,  # augmented inference
+    visualize = False,  # visualize features
+    half = False,  # use FP16 half-precision inference
     t_end = time.time() + (60 * 60 * Run_Duration_hours)
     # using the datetime.fromtimestamp() function
     date_time = datetime.datetime.fromtimestamp(t_end)
@@ -183,20 +183,16 @@ def main_auto():
         max_det=10,  # maximum detections per image
         device='0',  # cuda device, i.e. 0 or 0,1,2,3 or cpu
         view_img=False,  # show results
-        save_txt=False,  # save results to *.txt
+        save_txt=True,  # save results to *.txt
         save_conf=False,  # save confidences in --save-txt labels
-        save_crop=False,  # save cropped prediction boxes
+        save_crop=True,  # save cropped prediction boxes
         classes=None,  # filter by class: --class 0, or --class 0 2 3
-        agnostic_nms=False,  # class-agnostic NMS
-        augment=False,  # augmented inference
-        visualize=False,  # visualize features
         project='runs/detect',  # save results to project/name
         name='exp',  # save results to project/name
         exist_ok=False,  # existing project/name ok, do not increment
         line_thickness=1,  # bounding box thickness (pixels)
         hide_labels=False,  # hide labels
         hide_conf=False,  # hide confidences
-        half=False,  # use FP16 half-precision inference
         Run_Duration_hours=6,  # how long to run code for in hours
         Enable_clicks=False
         )
