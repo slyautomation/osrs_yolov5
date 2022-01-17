@@ -45,7 +45,6 @@ Step walkthrough Installation of cuDNN: https://github.com/slyautomation/osrs_yo
 
 labelImg = https://tzutalin.github.io/labelImg/
 
-
 ### Using this Repo
 
 Add this repo to a project in Pycharm
