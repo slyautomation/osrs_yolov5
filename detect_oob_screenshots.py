@@ -5,6 +5,8 @@ import sys
 import time
 from multiprocessing import Process
 from pathlib import Path
+
+import mss as mss
 import numpy as np
 import cv2
 import pyautogui
@@ -25,11 +27,11 @@ start_time = time.time()
 
 shoot_time = time.time()
 # displays the frame rate every 2 second
-display_time = 2
+display_time = 1
 # Set primarry FPS to 0
 fps = 0
-# Set monitor size to capture
-monitor = (40,  0, 800, 800)
+# Set monitor size to capture # left # top # right # bottom
+monitor = (0,  0, 1280, 1080)
 
 width = 1920  # 800
 height = 1080  # 640
@@ -97,14 +99,14 @@ class YOLO():
         return names, model, stride, imgsz
 
     def detect_image(self, source, names, model, imgsz, stride):
-        t1 = time.time()
+        #t1 = time.time()
         dataset = LoadImages(source, img_size=imgsz, stride=stride, auto=True)
-
         # Run inference
         # model(torch.zeros(1, 3, *[1280,1280]).to(device).type_as(next(model.parameters())))
 
         #t0 = time.time()
         for path, img, im0s, vid_cap in dataset:
+            #print(img)
             img = torch.from_numpy(img).to(self.device)
             img = img.half() if self.half else img.float()  # uint8 to fp16/32
             img = img / 255.0  # 0 - 255 to 0.0 - 1.0
@@ -143,8 +145,8 @@ class YOLO():
                         label = None if self.hide_labels else (names[c] if self.hide_conf else f'{names[c]} {conf:.2f}')
                         im0 = plot_one_box(xyxy, im0, label=label, color=colors(c, True),
                                            line_width=self.line_thickness)
-                    t1_e = time.time()
-                    print(f't1 elasped time: {t1_e - t1}')
+                    #t1_e = time.time()
+                    #print(f't1 elasped time: {t1_e - t1}')
                     return im0, xyxy, label, conf
                 # Print time (inference + NMS)
                 #print(f'{s}Done. ({t2 - t1:.3f}s)')
@@ -231,6 +233,7 @@ def click_attack(box):
     d = random.uniform(0.01, 0.05)
     pyautogui.click(button='left', duration=d)
 
+
 def GRABMSS_screen():
     im = ImageGrab.grab(bbox=monitor) # left , top , right, bottom
     im.save('fullscreen.jpg')
@@ -259,7 +262,7 @@ def SHOWMSS_screen():
     label = None
     conf = None
     t_end = time.time() + (60 * 60 * Run_Duration_hours)
-    print(Run_Duration_hours)
+    print(f'Running for {Run_Duration_hours} hours')
     shoot_time = time.time()
     yolo = YOLO(weights,
                 source,
@@ -279,7 +282,7 @@ def SHOWMSS_screen():
                 half)
     while time.time() < t_end:
         img = GRABMSS_screen()
-        t2 = time.time()
+        #t2 = time.time()
         try:
             im0, xyxy, label, conf = yolo.detect_image(img, yolo.names, yolo.model, yolo.imgsz, yolo.stride)
         except TypeError:
@@ -287,8 +290,8 @@ def SHOWMSS_screen():
             xyxy = None
             label = None
             conf = None
-        t2_e = time.time()
-        print(f't2 elasped time: {t2_e - t2}')
+        #t2_e = time.time()
+        #print(f't2 elasped time: {t2_e - t2}')
         if xyxy == None:
             print('nothing')
             if view_img:
@@ -324,7 +327,7 @@ def SHOWMSS_screen():
         if cv2.waitKey(1) & 0xFF == ord('q'): break
 
 
-
+sct = mss.mss()
 weights = 'best.pt'  # model.pt path(s)
 source = 'fullscreen.jpg'  # file/dir/URL/glob, 0 for webcam
 imgsz = [640, 640]  # inference size (pixels)
