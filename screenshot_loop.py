@@ -9,7 +9,7 @@ monitor = {"top": 40, "left": 0, "width": 800, "height": 640}
 title = "FPS benchmark"
 
 sct = mss.mss()
-img = 247
+img = 0
 while True:
     # -- include('examples/showgrabfullscreen.py') --#
 
