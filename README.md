@@ -40,7 +40,7 @@ cuDNN = https://developer.nvidia.com/rdp/cudnn-archive#a-collapse765-10
 
 Step walkthrough Installation of cuDNN: https://github.com/slyautomation/osrs_yolov5/wiki/How-to-install-CuDNN
 
-### Download and Open LabelImg
+### Download and Use LabelImg for creating annotated (object identified bounding boxes) image data
 
 labelImg = https://tzutalin.github.io/labelImg/
 
