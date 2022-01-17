@@ -10,6 +10,7 @@ title = "FPS benchmark"
 
 sct = mss.mss()
 img = 0
+mob = 'cow'
 while True:
     # -- include('examples/showgrabfullscreen.py') --#
 
@@ -17,7 +18,7 @@ while True:
         # grab fullscreen
         im = ImageGrab.grab([0,0,1280,1024])
         # save image file
-        im.save(r'./datasets/osrs/' + str(img) + '.jpg', 'jpg')
+        im.save(r'./datasets/osrs/' + mob + '_' + str(img) + '.jpg', 'jpg')
 
         # show image in a window
         #im.show()
