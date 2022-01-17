@@ -17,7 +17,7 @@ while True:
         # grab fullscreen
         im = ImageGrab.grab([0,0,1280,1024])
         # save image file
-        im.save(r'goblin\osrs_image_goblin' + str(img) + '.png', 'png')
+        im.save(r'./datasets/osrs/' + str(img) + '.jpg', 'jpg')
 
         # show image in a window
         #im.show()
