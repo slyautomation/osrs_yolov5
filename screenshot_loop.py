@@ -1,9 +1,18 @@
 import mss
 import cv2
 import time
+import os
 import pyscreenshot as ImageGrab
 start_time = time.time()
 display_time = 0.5
+
+def ensure_dir():
+    directory = os.path.dirname('./datasets/osrs/')
+    print(directory)
+    if not os.path.exists('./datasets/osrs/'):
+        os.makedirs('./datasets/osrs/')
+
+ensure_dir()
 
 monitor = {"top": 40, "left": 0, "width": 800, "height": 640}
 title = "FPS benchmark"
