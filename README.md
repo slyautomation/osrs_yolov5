@@ -44,7 +44,7 @@ Step walkthrough Installation of cuDNN: https://github.com/slyautomation/osrs_yo
 
 labelImg = https://tzutalin.github.io/labelImg/
 
-Step walkthrough download and using LabelImg: https://github.com/slyautomation/osrs_yolov5/wiki/Downloading-and-using-LabelImg
+Step walkthrough capturing screen images, downloading and using LabelImg: https://github.com/slyautomation/osrs_yolov5/wiki/Downloading-and-using-LabelImg
 
 ### Using this Repo
 
