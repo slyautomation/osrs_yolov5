@@ -54,7 +54,7 @@ OCR-Tesseract:
 
 <a href src="https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.0.1.20220118.exe">tesseract-ocr-w64-setup-v5.0.1.20220118.exe (64 bit)</a> resp.
 
-Step walkthrough installing OCR-Tesseract: 
+Step walkthrough installing OCR-Tesseract: https://github.com/slyautomation/osrs_yolov5/wiki/How-to-Install-OCR-Tesseract
 
 ### Using this Repo
 
