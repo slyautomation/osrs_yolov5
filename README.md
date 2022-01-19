@@ -46,6 +46,12 @@ labelImg = https://tzutalin.github.io/labelImg/
 
 Step walkthrough capturing screen images, downloading and using LabelImg: https://github.com/slyautomation/osrs_yolov5/wiki/Downloading-and-using-LabelImg
 
+### Install OCR-Tesseract
+
+OCR-Tesseracrt:
+<a href src="https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-v5.0.1.20220118.exe">tesseract-ocr-w32-setup-v5.0.1.20220118.exe (32 bit)</a> and
+<a href src="https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.0.1.20220118.exe">tesseract-ocr-w64-setup-v5.0.1.20220118.exe (64 bit)</a> resp.
+
 ### Using this Repo
 
 Add this repo to a project in Pycharm
