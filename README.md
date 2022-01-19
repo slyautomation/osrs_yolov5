@@ -48,9 +48,13 @@ Step walkthrough capturing screen images, downloading and using LabelImg: https:
 
 ### Install OCR-Tesseract
 
-OCR-Tesseracrt:
+OCR-Tesseract:
+
 <a href src="https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-v5.0.1.20220118.exe">tesseract-ocr-w32-setup-v5.0.1.20220118.exe (32 bit)</a> and
+
 <a href src="https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.0.1.20220118.exe">tesseract-ocr-w64-setup-v5.0.1.20220118.exe (64 bit)</a> resp.
+
+Step walkthrough installing OCR-Tesseract: 
 
 ### Using this Repo
 
