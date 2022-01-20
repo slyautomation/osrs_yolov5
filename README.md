@@ -18,7 +18,7 @@ installing python programming language
 
 <a href src="https://www.python.org/downloads/">python downloads website</a>
 
-Click the download button, for the latest python version (for MacOS/Linux or Ubuntu use the other links).
+Click the download button, for the latest python version (for older version of Windows 7 or earlier, MacOS/Linux or Ubuntu use the other links).
 
 ![image](https://user-images.githubusercontent.com/81003470/150244585-c7d097d2-3691-4de9-be53-577fafda0b4e.png)
 
