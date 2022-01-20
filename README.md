@@ -16,7 +16,7 @@ Full Video Tutorial: TBA
 
 installing python programming language
 
-<a href src="https://www.python.org/downloads/">python downloads website</a>
+<a href="https://www.python.org/downloads/" rel="nofollow">python downloads website</a>
 
 Click the download button, for the latest python version (for older version of Windows 7 or earlier, MacOS/Linux or Ubuntu use the other links).
 
@@ -25,9 +25,9 @@ Click the download button, for the latest python version (for older version of W
 
 ### installing pycharm
 
-installing pycharm <a href src="https://www.jetbrains.com/pycharm/download/">pycharm</a>.
+installing pycharm <a href=""https://www.jetbrains.com/pycharm/download/" rel="nofollow">pycharm</a>.
 
-<a href src="https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows&code=PCC">pycharm windows</a>
+<a href="https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows&code=PCC" rel="nofollow">pycharm windows</a>
 
 Step walkthrough Installation of pycharm: https://github.com/slyautomation/osrs_yolov5/wiki/How-to-Install-Pycharm
 
