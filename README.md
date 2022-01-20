@@ -14,7 +14,10 @@ Full Video Tutorial: TBA
 
 ### installing pycharm
 
-pycharm = https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows&code=PCC
+installing pycharm
+<a href src="https://www.jetbrains.com/pycharm/download/#section=windows">pycharm</a> 
+
+<a href src="https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows&code=PCC">pycharm windows</a>
 
 Step walkthrough Installation of pycharm: https://github.com/slyautomation/osrs_yolov5/wiki/How-to-Install-Pycharm
 
