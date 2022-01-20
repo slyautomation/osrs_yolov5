@@ -25,7 +25,7 @@ Click the download button, for the latest python version (for older version of W
 
 ### installing pycharm
 
-installing pycharm <a href src="https://www.jetbrains.com/pycharm/download/">pycharm</a> 
+installing pycharm <a href src="https://www.jetbrains.com/pycharm/download/">pycharm</a>.
 
 <a href src="https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows&code=PCC">pycharm windows</a>
 
