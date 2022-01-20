@@ -25,7 +25,7 @@ Click the download button, for the latest python version (for older version of W
 
 ### installing pycharm
 
-installing pycharm <a href=""https://www.jetbrains.com/pycharm/download/" rel="nofollow">pycharm</a>.
+installing pycharm <a href="https://www.jetbrains.com/pycharm/download/" rel="nofollow">pycharm</a>.
 
 <a href="https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows&code=PCC" rel="nofollow">pycharm windows</a>
 
@@ -63,9 +63,9 @@ Step walkthrough capturing screen images, downloading and using LabelImg: https:
 
 OCR-Tesseract:
 
-<a href src="https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-v5.0.1.20220118.exe">tesseract-ocr-w32-setup-v5.0.1.20220118.exe (32 bit)</a> and
+<a href="https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-v5.0.1.20220118.exe">tesseract-ocr-w32-setup-v5.0.1.20220118.exe (32 bit)</a> and
 
-<a href src="https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.0.1.20220118.exe">tesseract-ocr-w64-setup-v5.0.1.20220118.exe (64 bit)</a> resp.
+<a href="https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.0.1.20220118.exe">tesseract-ocr-w64-setup-v5.0.1.20220118.exe (64 bit)</a> resp.
 
 Step walkthrough installing OCR-Tesseract: https://github.com/slyautomation/osrs_yolov5/wiki/How-to-Install-OCR-Tesseract
 
