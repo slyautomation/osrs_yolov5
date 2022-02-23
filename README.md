@@ -37,13 +37,11 @@ type in terminal: ```nvidia-smi```
 
 ![image](https://user-images.githubusercontent.com/81003470/147712277-5b1fae1d-33b2-4ff0-a4de-19ef762e1b14.png)
 
-my version that i can use is up to: 11.5 but for simplicity i can use previous versions namely 10.0 and 10.2
+my version that i can use is up to: 11.5 but for simplicity i can use previous versions namely 10.2
 
 Check if your gpu will work: https://developer.nvidia.com/cuda-gpus and use the cuda for your model and the latest cudnn for the cuda version.
 
 full list of cuda versions: https://developer.nvidia.com/cuda-toolkit-archive
-
-cuda 10.0 = https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_411.31_win10
 
 cuda 10.2 = https://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_441.22_win10.exe
 
