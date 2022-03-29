@@ -325,3 +325,7 @@ Runtimeerror on Train.py: make sure there is enough hard drive storage space, th
 RuntimeError on Detect.py: Couldn't load custom C++ ops. This can happen if your PyTorch and torchvision versions are incompatible, or if you had errors while compiling torchvision from source. For further information on the compatible versions, check https://github.com/pytorch/vision#installation for the compatibility matrix. Please check your PyTorch version with torch.__version__ and your torchvision version with torchvision.__version__ and verify if they are compatible and if not please reinstall torchvision so that it matches your PyTorch install.
 
 If the above error occurs install a different version of pytorch and install the compatiable torchvision module. TBA i'll add a list of compatiable versions with this project with my gpu and cuda version.
+  
+RuntimeError: The size of tensor a (80) must match the size of tensor b (56) at non-singleton dimension 3.
+  
+The weighted file is corrupted, use the following link and replace the weight file: https://github.com/ultralytics/yolov5/releases/download/v5.0/yolov5s.pt
