@@ -8,7 +8,7 @@ https://user-images.githubusercontent.com/81003470/148143834-97b237c1-205c-4e95-
 
 For a video with commentary: https://youtu.be/rqk0kq4Vu3M
 
-Full Video Tutorial: TBA
+Full Video Tutorial: https://youtu.be/pjIEI27DImA
 
 # Quick Start
 
