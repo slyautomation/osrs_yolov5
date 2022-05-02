@@ -297,7 +297,7 @@ In the terminal type:
   
 See below examples on amazon under $20:
   
--<a target="_blank" href="https://www.amazon.com.au/gp/product/B097YC56QH/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B097YC56QH&linkCode=as2&tag=slyautomation-22&linkId=6401772c54cb0d307a4955953cb207ab">MSY Upgraded Version HDMI to USB 3.0 Video Capture Card Recorder Streaming Max HD 1080P with Cable for Game Video Live</a>
+-<a target="_blank" href="https://amzn.to/3MFoWbO">MSY Upgraded Version HDMI to USB 3.0 Video Capture Card Recorder Streaming Max HD 1080P with Cable for Game Video Live</a>
 
 ![image](https://user-images.githubusercontent.com/81003470/148019089-7c226fd6-382a-4da6-ab37-e8a66a3e838a.png)
   
