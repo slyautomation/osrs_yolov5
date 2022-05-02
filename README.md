@@ -295,10 +295,12 @@ In the terminal type:
   
 ```python detect.py --source 0 --weights best.pt --img 640```
   
-See below examples on amazon under $20:
+See below examples on amazon/aliexpress under $20:
   
--<a target="_blank" href="https://amzn.to/3MFoWbO">MSY Upgraded Version HDMI to USB 3.0 Video Capture Card Recorder Streaming Max HD 1080P with Cable for Game Video Live</a>
+-<a target="_blank" href="https://amzn.to/3MFoWbO">Amazon - $11.07  - Audio Video Capture Cards HDMI to USB 3.0 1080P 4K Record Via DSLR Camcorder Action Cam for High Definition Acquisition, Live Broadcasting</a>
 
+-<a target="_blank" href="https://s.click.aliexpress.com/e/_A43K9L">Aliexpress - $9.90 - 4K Video Capture Card USB 3.0 USB2.0 HDMI-compatible Grabber Recorder for PS4 Game DVD Camcorder Camera Recording Live Streaming</a>
+  
 ![image](https://user-images.githubusercontent.com/81003470/148019089-7c226fd6-382a-4da6-ab37-e8a66a3e838a.png)
   
 ## Retrain using Detections
