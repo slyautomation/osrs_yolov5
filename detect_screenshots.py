@@ -87,7 +87,9 @@ def run(weights='best.pt',  # model.pt path(s)
     # Initialize
     set_logging()
     device = select_device(device)
-    half &= device.type != 'cpu'  # half precision only supported on CUDA
+    res = type(device) is tuple or type(device) is bool
+    if res:
+        half &= device.type != 'cpu'  # half precision only supported on CUDA
 
     # Directories
     save_dir = increment_path(Path(project) / name, exist_ok=exist_ok)  # increment run
