@@ -18,7 +18,7 @@ from PIL import Image, ImageGrab
 from models.experimental import attempt_load
 from utils.datasets import LoadImages
 from utils.general import check_img_size, check_requirements, non_max_suppression, \
-    scale_coords, set_logging
+    scale_coords, set_logging, increment_path, save_one_box, xyxy2xywh
 from utils.plots import colors, plot_one_box
 from utils.torch_utils import select_device
 
@@ -52,6 +52,9 @@ class YOLO():
             max_det: int,  # maximum detections per image
             device: str,  # cuda device, i.e. 0 or 0,1,2,3 or cpu
             view_img: bool,  # show results
+            save_crop: bool,
+            save_txt: bool,
+            save_conf: bool,
             classes: None,  # filter by class: --class 0, or --class 0 2 3
             agnostic_nms: bool,  # class-agnostic NMS
             augment: bool,  # augmented inference
@@ -69,6 +72,9 @@ class YOLO():
         self.max_det = max_det
         self.device = device
         self.view_img = view_img
+        self.save_crop = save_crop
+        self.save_txt = save_txt
+        self.save_conf = save_conf
         self.classes = classes
         self.agnostic_nms = agnostic_nms
         self.augment = augment
@@ -83,6 +89,8 @@ class YOLO():
         self.half &= self.device.type != 'cpu'  # half precision only supported on CUDA
         self.names, self.model, self.stride, self.imgsz = self.generate(self.weights, self.device, self.imgsz)
 
+
+
     def generate(self, weights, device, imgsz):
         #print(weights)
         #print(device)
@@ -93,6 +101,7 @@ class YOLO():
         names = model.module.names if hasattr(model, 'module') else model.names  # get class names
         imgsz = check_img_size(imgsz, s=stride)  # check image size
         # print(imgsz)
+
 
         model(torch.zeros(1, 3, *imgsz).to(device).type_as(next(model.parameters())))  # run once
         cudnn.benchmark = True  # set True to speed up constant image size inference
@@ -130,6 +139,8 @@ class YOLO():
                 p, s, im0, frame = path, '', im0s.copy(), getattr(dataset, 'frame', 0)
                 p = Path(p)  # to Path
                 s += '%gx%g ' % img.shape[2:]  # print string
+                gn = torch.tensor(im0.shape)[[1, 0, 1, 0]]  # normalization gain whwh
+                imc = im0.copy() if self.save_crop else im0  # for save_crop
                 if len(det):
                     # Rescale boxes from img_size to im0 size
                     det[:, :4] = scale_coords(img.shape[2:], det[:, :4], im0.shape).round()
@@ -145,6 +156,19 @@ class YOLO():
                         label = None if self.hide_labels else (names[c] if self.hide_conf else f'{names[c]} {conf:.2f}')
                         im0 = plot_one_box(xyxy, im0, label=label, color=colors(c, True),
                                            line_width=self.line_thickness)
+                        if self.save_txt:  # Write to file
+                            xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
+                            line = (cls, *xywh, conf) if self.save_conf else (cls, *xywh)  # label format
+                            with open(str(increment_path(save_dir / 'labels' / f'{p.stem}_full_{frame}.txt', mkdir=True).with_suffix('.txt')), 'w+') as f:
+                                f.write(('%g ' * len(line)).rstrip() % line + '\n')
+                                f.close()
+                        if self.save_crop:  # Add bbox to image
+                            c = int(cls)  # integer class
+                            label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
+                            im0 = plot_one_box(xyxy, im0, label=label, color=colors(c, True), line_width=line_thickness)
+                            save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
+                            cv2.imwrite(str(increment_path(save_dir / 'crops' / f'{p.stem}_full_{frame}.jpg', mkdir=True).with_suffix('.jpg')), imc)
+
                     #t1_e = time.time()
                     #print(f't1 elasped time: {t1_e - t1}')
                     return im0, xyxy, label, conf
@@ -272,6 +296,9 @@ def SHOWMSS_screen():
                 max_det,
                 device,
                 view_img,
+                save_crop,
+                save_txt,
+                save_conf,
                 classes,
                 agnostic_nms,
                 augment,
@@ -336,6 +363,9 @@ iou_thres = 0.45  # NMS IOU threshold
 max_det = 10  # maximum detections per image
 device = '0'  # cuda device, i.e. 0 or 0,1,2,3 or cpu
 view_img = True  # show results
+save_crop = True
+save_txt = True
+save_conf = False
 classes = None  # filter by class: --class 0, or --class 0 2 3
 agnostic_nms = False  # class-agnostic NMS
 augment = False  # augmented inference
@@ -346,6 +376,10 @@ hide_conf = False  # hide confidences
 half = False  # use FP16 half-precision inference
 Run_Duration_hours = 6  # how long to run code for in hours
 Enable_clicks = False
+
+# Directories
+save_dir = increment_path(Path('runs/detect') / 'exp', exist_ok=False)  # increment run
+(save_dir / 'labels' if save_txt else save_dir).mkdir(parents=True, exist_ok=True)  # make dir
 if __name__ == "__main__":
     x = random.randrange(625, 635)
     y = random.randrange(345, 355)
