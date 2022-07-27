@@ -111,7 +111,7 @@ use the latest versions found, i at this point in time found: torch 1.9.0 and to
 
   ```pip install torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html```
   
-- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Make sure when installing torchvision it doesn't try to install another version due to incompatability, try to either find a later version of torch or use a downgraded version of torchvision. there could be issues if another torch version is installed but the cuda version doesn't align with your gpu.`
+- `Make sure when installing torchvision it doesn't try to install another version due to incompatability, try to either find a later version of torch or use a downgraded version of torchvision. there could be issues if another torch version is installed but the cuda version doesn't align with your gpu.`
 
 ## Test pytorch and cuda work
   
