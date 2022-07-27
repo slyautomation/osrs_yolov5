@@ -4,6 +4,10 @@
 
 name: GeForce GTX 1060 6GB (average fps 11 on monitor display using screenshots)
 
+```dif 
+note: There's issues as at July 2022 with newer gpus namely GeForce RTX 3090 & 2080 with the Pytorch Framework, hopefully in the future these issues can be resolved and a stable release can be made.
+```
+
 https://user-images.githubusercontent.com/81003470/148143834-97b237c1-205c-4e95-b2c7-fb16e9938184.mp4
 
 For a video with commentary: https://youtu.be/rqk0kq4Vu3M
