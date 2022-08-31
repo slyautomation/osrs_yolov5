@@ -57,7 +57,7 @@ Step walkthrough Installation of cuDNN: https://github.com/slyautomation/osrs_yo
 
 ### Download and Use LabelImg for creating annotated (object identified bounding boxes) image data
 
-labelImg = https://tzutalin.github.io/labelImg/
+labelImg = https://github.com/heartexlabs/labelImg/releases
 
 Step walkthrough capturing screen images, downloading and using LabelImg: https://github.com/slyautomation/osrs_yolov5/wiki/Downloading-and-using-LabelImg
 
