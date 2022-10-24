@@ -22,9 +22,15 @@ installing python programming language
 
 <a href="https://www.python.org/downloads/" rel="nofollow">python downloads website</a>
 
-Click the download button, for the latest python version (for older version of Windows 7 or earlier, MacOS/Linux or Ubuntu use the other links).
+Pytorch is only compatiable with versions of python 3.7 or earlier, to get a previous version:
 
-![image](https://user-images.githubusercontent.com/81003470/150244585-c7d097d2-3691-4de9-be53-577fafda0b4e.png)
+https://www.python.org/downloads/windows/
+
+https://www.python.org/downloads/macos/
+
+https://www.python.org/ftp/python/3.7.9/python-3.7.9-amd64.exe
+
+![image](![image](https://user-images.githubusercontent.com/81003470/197636886-08a85a8c-7a65-46fc-a83e-865972bff6bb.png))
 
 
 ### installing pycharm
