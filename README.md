@@ -107,15 +107,13 @@ use the latest versions found, i at this point in time found: torch 1.9.0 and to
   
   in the terminal type the torch version + your cuda version (except for torchaudio no cuda version required):
   
-  ```pip install torch==1.9.1+cu102 -f https://download.pytorch.org/whl/torch_stable.html```
+  ```pip install torch==1.9.0+cu102 torchvision==0.10.0+cu102 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html```
   
   ![image](https://user-images.githubusercontent.com/81003470/147749033-c5de2a74-5365-444c-93c1-f5d9f75512c4.png)
 
-  ```pip install torchvision==0.10.1+cu102 -f https://download.pytorch.org/whl/torch_stable.html```
   
   ![image](https://user-images.githubusercontent.com/81003470/147749284-9411be6f-f000-4bf9-a167-b0d214b977f5.png)
 
-  ```pip install torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html```
   
 - `Make sure when installing torchvision it doesn't try to install another version due to incompatability, try to either find a later version of torch or use a downgraded version of torchvision. there could be issues if another torch version is installed but the cuda version doesn't align with your gpu.`
 
