@@ -107,11 +107,11 @@ use the latest versions found, i at this point in time found: torch 1.9.0 and to
   
   in the terminal type the torch version + your cuda version (except for torchaudio no cuda version required):
   
-  ```pip install torch==1.9.0+cu102 -f https://download.pytorch.org/whl/torch_stable.html```
+  ```pip install torch==1.9.1+cu102 -f https://download.pytorch.org/whl/torch_stable.html```
   
   ![image](https://user-images.githubusercontent.com/81003470/147749033-c5de2a74-5365-444c-93c1-f5d9f75512c4.png)
 
-  ```pip install torchvision==0.10.0+cu102 -f https://download.pytorch.org/whl/torch_stable.html```
+  ```pip install torchvision==0.10.1+cu102 -f https://download.pytorch.org/whl/torch_stable.html```
   
   ![image](https://user-images.githubusercontent.com/81003470/147749284-9411be6f-f000-4bf9-a167-b0d214b977f5.png)
 
