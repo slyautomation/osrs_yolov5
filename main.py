@@ -26,6 +26,7 @@ if device.type == 'cuda':
     print('Cached:   ', round(torch.cuda.memory_reserved(0)/1024**3,1), 'GB')
     my_tensor = torch.tensor([[1, 2, 3], [4, 5, 6]], dtype=torch.float32, device="cuda")
     print('testing pytorch with cuda...result is:', my_tensor)
-    ok = torchvision.io.read_image(str(directory) + "/data/images/cow_osrs_test.png")
+    print(str(directory) + "\\data\\images\\cow_osrs_test.PNG")
+    ok = torchvision.io.read_image(str(directory) + "\\data\\images\\bus.jpg")
     print(ok)
 download_weights()
