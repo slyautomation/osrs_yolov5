@@ -55,7 +55,7 @@ directory = pathlib.Path(__file__).parent.resolve()
 print(str(directory) + path)
 # Classes
 nc = 1  # number of classes
-names = ['Al Kharid warrior']  # class names
+names = ['cow']  # class names
 
 
 imgs_path = str(directory) + path + 'images'
