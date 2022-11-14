@@ -1,4 +1,9 @@
 
+original work created by https://github.com/ultralytics/yolov5
+
+YOLOv5 🚀 is the world's most loved vision AI, representing <a href="https://ultralytics.com/" rel="nofollow">Ultralytics</a> open-source research into future vision AI methods, incorporating lessons learned and best practices evolved over thousands of hours of research and development.
+
+To request a commercial license please complete the form at <a href="https://ultralytics.com/license" rel="nofollow">Ultralytics Licensing</a>.
 
 # Yolov5 Object Detection In OSRS using Python code, Detecting Cows - Botting
 
