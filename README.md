@@ -193,7 +193,7 @@ For more information and tips on datasets, model selection and training settings
 
 The setting i found useful with a GeForce GTX 1060 6GB gpu are as follows. In the terminal type:
 
-```python train.py --data osrs.yaml --weights yolov5s.pt --batch-size 2 --epoch 200``` 
+```python train.py --data osrs.yaml --weights yolov5s.pt --img 640``` 
   
 ![image](https://user-images.githubusercontent.com/81003470/147907954-cd20c621-d848-49e3-83a5-45032ba768ba.png)
   
