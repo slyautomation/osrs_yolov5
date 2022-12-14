@@ -261,44 +261,62 @@ And here's the image result:
 ![image](https://user-images.githubusercontent.com/81003470/148021301-f7c58ad1-bc2e-43af-a82f-71a929d5a0cc.png)
 
 ## Test Custom Detections (osrs cows model) on Monitor Display (screenshots with Pillow ImageGrab)
- 
-For a single screenshot, in the terminal type:
-
-```python detect.py --source stream.jpg --weights best.pt --img 640 --use-screen ```
 
 For a constant stream of the monitor display, in the terminal run:
   
-```python detect_screenshots.py``` or right click on the detect_screenshots_only.py script and select run:
+```python detect.py --source screen --weights 46classes.pt --img 640```
   
-![image](https://user-images.githubusercontent.com/81003470/148022895-e34e65d6-0b6b-4d64-b9dc-a7b7ab38e148.png)
 
-This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect_screenshots.py">detect_screenshots.py</a> with the default parameters listed below and can be changed to suit your needs.
-  
+This will run <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect.py">detect.py</a> with the default parameters listed below and can be changed to suit your needs.
 ```
-def main_auto():
-    run(weights='best.pt',  # model.pt path(s)
-        imgsz=[640,640],  # inference size (pixels)
-        conf_thres=0.7,  # confidence threshold
+def run(
+        weights=ROOT / 'yolov5s.pt',  # model path or triton URL
+        source=ROOT / 'data/images',  # file/dir/URL/glob/screen/0(webcam)
+        data=ROOT / 'data/coco128.yaml',  # dataset.yaml path
+        imgsz=(640, 640),  # inference size (height, width)
+        conf_thres=0.25,  # confidence threshold
         iou_thres=0.45,  # NMS IOU threshold
-        max_det=10,  # maximum detections per image
-        device='0',  # cuda device, i.e. 0 or 0,1,2,3 or cpu
+        max_det=1000,  # maximum detections per image
+        device='',  # cuda device, i.e. 0 or 0,1,2,3 or cpu
         view_img=False,  # show results
         save_txt=False,  # save results to *.txt
         save_conf=False,  # save confidences in --save-txt labels
         save_crop=False,  # save cropped prediction boxes
+        nosave=False,  # do not save images/videos
         classes=None,  # filter by class: --class 0, or --class 0 2 3
-        project='runs/detect',  # save results to project/name
+        agnostic_nms=False,  # class-agnostic NMS
+        augment=False,  # augmented inference
+        visualize=False,  # visualize features
+        update=False,  # update all models
+        project=ROOT / 'runs/detect',  # save results to project/name
         name='exp',  # save results to project/name
         exist_ok=False,  # existing project/name ok, do not increment
-        line_thickness=1,  # bounding box thickness (pixels)
+        line_thickness=3,  # bounding box thickness (pixels)
         hide_labels=False,  # hide labels
         hide_conf=False,  # hide confidences
-        Run_Duration_hours=6,  # how long to run code for in hours
-        Enable_clicks=False
-        )
+        half=False,  # use FP16 half-precision inference
+        dnn=False,  # use OpenCV DNN for ONNX inference
+        vid_stride=1,  # video frame-rate stride
+        attack=False,
+        window=0,
+        click_threshold= 0.9,
+):
  ```
+To run on the captured screen and view the result add ```--view-img``` to the run script command.
 
-For the users that prefer using object orientated programming scripts refer to <a href="https://github.com/slyautomation/osrs_yolov5/blob/main/detect_oob_screenshots">detect_oob_screenshots.py</a>
+```python detect.py --source screen --weights 46classes.pt --img 640 --view-img```
+
+Adjust the size of the viewing window by adding ```--window size``` and the size (single int).
+
+```python detect.py --source screen --weights 46classes.pt --img 640 --view-img --window 800```
+
+To enable mouse clicks and for the computer to click on detected object add ```--attack```
+
+```python detect.py --source screen --weights 46classes.pt --img 640 --view-img --attack --window 800```
+
+To change what confidence threshhold each mouse click will target to only get the highest confidence for detected objects add ```--click-threshold``` then a float number.
+
+```python detect.py --source screen --weights 46classes.pt --img 640 --view-img --attack --window 800 --click-threshold 0.8```
   
 ## Test Custom Detections (osrs cows model) on Data Capture
   
@@ -318,7 +336,15 @@ See below examples on amazon/aliexpress under $20:
   
 ## Retrain using Detections
   
-By default detect.py will take labels and fullscreen images while the detection is running. These will be saved under runs/detect/exp<number>, labels in labels folder and images in crops folder.
+By default detect.py will not take labels and fullscreen images while the detection is running. 
+
+Either change the default settings as mentioned above on detect.py from line 69 to 98 or add to the run script command:
+
+change in the settings save_txt=True, save_crop=True or add the following to the run script:
+
+```--save-txt --save-crop```
+
+These will be saved under runs/detect/exp<number>, full screenshots and labels in labels folder and cropped images in crops folder.
 
 ![image](https://user-images.githubusercontent.com/81003470/148140979-4b7d1bd1-7e5f-4c58-8102-3e860f1b132b.png)
 
