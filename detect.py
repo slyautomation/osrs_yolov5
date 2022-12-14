@@ -24,13 +24,18 @@ Usage - formats:
                                  yolov5s_edgetpu.tflite     # TensorFlow Edge TPU
                                  yolov5s_paddle_model       # PaddlePaddle
 """
-
+# python detect.py --source data/images/rat_goblin_test.png --weights 46classes.pt --img 640
+# python detect.py --source screen --weights 46classes.pt --img 640 --view-img
+# python detect.py --source screen --weights 46classes.pt --img 640 --view-img --attack --window 800 -click-threshold 0.8
 import argparse
 import os
 import platform
+import random
 import sys
+import time
 from pathlib import Path
 
+import pyautogui
 import torch
 
 FILE = Path(__file__).absolute()
@@ -47,6 +52,17 @@ from utils.general import (LOGGER, Profile, check_file, check_img_size, check_im
 from utils.plots import Annotator, colors, save_one_box
 from utils.torch_utils import select_device, smart_inference_mode
 
+def click_object(box):
+    x = int(box[0])
+    y = int(box[1])
+    x2 = int(box[2])
+    y2 = int(box[3])
+    print('| x:', x, '| y:', y )
+    d = random.uniform(0.01,0.05)
+    #pyautogui.moveTo(round((x+x2)/2,0), round((y+y2)/2,0), duration=d) # center click
+    pyautogui.moveTo(round((x + x2) / 2, 0), round((y + (y*0.1)), 0), duration=d)  # 10% upper (head) click
+    d = random.uniform(0.01,0.05)
+    pyautogui.click(button='left', duration=d)
 
 @smart_inference_mode()
 def run(
@@ -77,6 +93,9 @@ def run(
         half=False,  # use FP16 half-precision inference
         dnn=False,  # use OpenCV DNN for ONNX inference
         vid_stride=1,  # video frame-rate stride
+        attack=False,
+        window=0,
+        click_thres=0.9,
 ):
     source = str(source)
     save_img = not nosave and not source.endswith('.txt')  # save inference images
@@ -84,6 +103,7 @@ def run(
     is_url = source.lower().startswith(('rtsp://', 'rtmp://', 'http://', 'https://'))
     webcam = source.isnumeric() or source.endswith('.txt') or (is_url and not is_file)
     screenshot = source.lower().startswith('screen')
+    time_clicked = time.time()
     if is_url and is_file:
         source = check_file(source)  # download
 
@@ -96,7 +116,6 @@ def run(
     model = DetectMultiBackend(weights, device=device, dnn=dnn, data=data, fp16=half)
     stride, names, pt = model.stride, model.names, model.pt
     imgsz = check_img_size(imgsz, s=stride)  # check image size
-
     # Dataloader
     bs = 1  # batch_size
     if webcam:
@@ -171,15 +190,25 @@ def run(
                         annotator.box_label(xyxy, label, color=colors(c, True))
                     if save_crop:
                         save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
-
+                if time.time() > time_clicked and float(conf) > click_thres and attack:
+                    click_object(xyxy)
+                    d = random.uniform(5,10)
+                    time_clicked = time.time() + d
             # Stream results
             im0 = annotator.result()
             if view_img:
                 if platform.system() == 'Linux' and p not in windows:
                     windows.append(p)
                     cv2.namedWindow(str(p), cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO)  # allow window resize (Linux)
-                    cv2.resizeWindow(str(p), im0.shape[1], im0.shape[0])
+                    if window == 0:
+                        cv2.resizeWindow(str(p), im0.shape[1], im0.shape[0])
+                    else:
+                        cv2.resizeWindow(str(p), window, window)
                 cv2.imshow(str(p), im0)
+                if window == 0:
+                    cv2.resizeWindow(str(p), im0.shape[1], im0.shape[0])
+                else:
+                    cv2.resizeWindow(str(p), window, window)
                 cv2.waitKey(1)  # 1 millisecond
 
             # Save results (image with detections)
@@ -243,6 +272,9 @@ def parse_opt():
     parser.add_argument('--half', action='store_true', help='use FP16 half-precision inference')
     parser.add_argument('--dnn', action='store_true', help='use OpenCV DNN for ONNX inference')
     parser.add_argument('--vid-stride', type=int, default=1, help='video frame-rate stride')
+    parser.add_argument('--attack', action='store_true', help='use to click on objects detection with mouse')
+    parser.add_argument('--window', default=0, type=int, help='use to adjust size of captured screenshots')
+    parser.add_argument('--click-threshold', default=0.9, type=float, help='determine what confidence threshold to click on objects detected')
     opt = parser.parse_args()
     opt.imgsz *= 2 if len(opt.imgsz) == 1 else 1  # expand
     print_args(vars(opt))
