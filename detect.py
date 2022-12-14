@@ -95,7 +95,7 @@ def run(
         vid_stride=1,  # video frame-rate stride
         attack=False,
         window=0,
-        click_threshold=0.9,
+        click_threshold= 0.9,
 ):
     source = str(source)
     save_img = not nosave and not source.endswith('.txt')  # save inference images
@@ -190,6 +190,7 @@ def run(
                         annotator.box_label(xyxy, label, color=colors(c, True))
                     if save_crop:
                         save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
+                        cv2.imwrite(f'{txt_path}.jpg', imc)
                 if time.time() > time_clicked and float(conf) > click_threshold and attack:
                     click_object(xyxy)
                     d = random.uniform(5,10)
