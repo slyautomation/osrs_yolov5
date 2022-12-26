@@ -306,17 +306,17 @@ To run on the captured screen and view the result add ```--view-img``` to the ru
 
 ```python detect.py --source screen --weights 46classes.pt --img 640 --view-img```
 
-Adjust the size of the viewing window by adding ```--window size``` and the size (single int).
+Adjust the size of the viewing window by adding ```--window size``` and the size (single int) and add to source in double quotes "screen left top right bottom".
 
-```python detect.py --source screen --weights 46classes.pt --img 640 --view-img --window 800```
+```python detect.py --source "screen 0 0 800 800" --weights 46classes.pt --img 640 --view-img --window 800```
 
 To enable mouse clicks and for the computer to click on detected object add ```--attack```
 
-```python detect.py --source screen --weights 46classes.pt --img 640 --view-img --attack --window 800```
+```python detect.py --source "screen 0 0 800 800" --weights 46classes.pt --img 640 --view-img --attack --window 800```
 
 To change what confidence threshhold each mouse click will target to only get the highest confidence for detected objects add ```--click-threshold``` then a float number.
 
-```python detect.py --source screen --weights 46classes.pt --img 640 --view-img --attack --window 800 --click-threshold 0.8```
+```python detect.py --source "screen 0 0 800 800" --weights 46classes.pt --img 640 --view-img --attack --window 800 --click-threshold 0.8```
   
 ## Test Custom Detections (osrs cows model) on Data Capture
   
