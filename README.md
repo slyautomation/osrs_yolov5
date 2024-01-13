@@ -113,11 +113,12 @@ use the latest versions found, i at this point in time found: torch 1.9.0 and to
   in the terminal type the torch version + your cuda version (except for torchaudio no cuda version required):
   
   ```pip install torch==1.9.0+cu102 torchvision==0.10.0+cu102 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html```
-  alternatively use this one:
+  
+ Alternatively use this one:
   
  ```pip install --upgrade --force-reinstall torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118```
 
-```pip install tensorboard seaborn tqdm matplotlib pandas pyyamlopencv-python```
+```pip install tensorboard seaborn tqdm matplotlib pandas pyyaml opencv-python```
 
 
 
