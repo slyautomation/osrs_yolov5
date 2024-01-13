@@ -27,3 +27,6 @@ os.system('cmd /c ' + first_cmd + ' & dir & ' + final_cmd)
 # unzip resulting file output.zip, this will have all the jpg and xml files
 with z.ZipFile(str(directory) + "\datasets\output.zip", 'r') as zip_ref:
     zip_ref.extractall(str(directory) + "\datasets\osrs\\")
+
+import png_to_jpg
+import convert_xml_data
